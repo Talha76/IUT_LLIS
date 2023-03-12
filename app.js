@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('<h1>OK</h1>');
-});
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+
+app.set('view engine', 'ejs');
 
 module.exports = app;
