@@ -4,7 +4,7 @@
   "description": "A project on Leave and late form application and information management system",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest --verbose --silent",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -14,6 +14,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "bugs": {
     "url": "https://github.com/Talha76/IUT_LLIS/issues"
   },

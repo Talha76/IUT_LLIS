@@ -1,31 +1,30 @@
 const { pool, client } = require('../config/database.config');
 
-describe('Postgres Integration Tests', () => {
+describe('PostgreSQL integration tests', () => {
   test('client should connect to database', async () => {
-    client.connect();
-    client.query('select now()', (err, res) => {
-      if (err) {
-        console.error(err);
-      } else {
-        expect(res.rows[0].now).toBeDefined();
-      }
-      client.end();
-    });
+    await client.connect();
+    const query = 'SELECT NOW()';
+    const results = [];
+    const res = await client.query(query);
+    res.rows.forEach(row => results.push(row));
+    await client.end();
+
+    expect(results.length).toBe(1);
+    expect(results[0].now).toBeDefined();
+    expect(results[0].then).toBeUndefined();
   });
 
   test('pool should connect to database', async () => {
-    pool.connect()
-      .then((clnt) => {
-        clnt.query('select now()', (err, res) => {
-          if (err) {
-            console.error(err);
-          } else {
-            expect(res.rows[0].now).toBeDefined();
-          }
-          clnt.release();
-        });
-      })
-      .catch((err) => console.error(err))
-      .finally(() => pool.end());
+    const results = [];
+    const clnt = await pool.connect();
+    const res = await clnt.query('SELECT NOW()');
+    res.rows.forEach(row => results.push(row));
+    await clnt.release();
+    await pool.end();
+
+    expect(results.length).toBe(1);
+    expect(results[0].now).toBeDefined();
+    expect(results[0].then).toBeUndefined();
   });
 });
+
