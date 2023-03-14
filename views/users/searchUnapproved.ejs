@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/public/css/adminStyle.css">
-  <title>Dashboard - Admin</title>
+  <title>searchUnapproved</title>
 </head>
-
 <body>
-  <div class="profile">
-    <h2>ADMIN PROFILE</h2>
-  </div>
   <form action="/admin/searchUnapproved" method="GET">
     <div class="search">
       <h2>SEARCH STUDENT</h2>
@@ -22,10 +16,9 @@
       <input type="submit" class="search-btn" value="Search">
     </div>
   </form>
-  <br>
-  <br>
+    
   <div class="search-results">
-    <h3>Unapproved Requests...</h3>
+    <h3>Search results...</h3>
     <%  if (searchResults.length == 0) { %>
       <%= '...........' %>
     <% } else { %>
@@ -37,12 +30,7 @@
         <%= '--------------------' %> <br>
         <%= src_rslt.id %>
         <br>
-        <%= src_rslt.studentId %>
-        <br>
-        <%= src_rslt.placeOfVisit %>
-        <br>
-        <%= src_rslt.purposeOfVisit %>
-        <br>
+        <%= src_rslt.name %>
         <br>
         <input type="submit" class="approve-button" value="Approve">
         <br>
@@ -52,9 +40,7 @@
         <% }) %>
       <% } %>
     <% } %>
-  </div>
-
+</div>
 
 </body>
-
 </html>
