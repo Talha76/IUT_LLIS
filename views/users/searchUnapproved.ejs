@@ -7,38 +7,38 @@
   <title>searchUnapproved</title>
 </head>
 <body>
-    <form action="/admin/searchUnapproved" method="GET">
-        <div class="search">
-            <h2>SEARCH STUDENT</h2>
-            <input type="text" class="search-box" id="id" name="id" placeholder="id">
-            <br>
-            <br>
-            <input type="submit" class="search-btn" value="Search">
-        </div>
-    </form>
+  <form action="/admin/searchUnapproved" method="GET">
+    <div class="search">
+      <h2>SEARCH STUDENT</h2>
+      <input type="text" class="search-box" id="id" name="id" placeholder="id">
+      <br>
+      <br>
+      <input type="submit" class="search-btn" value="Search">
+    </div>
+  </form>
     
   <div class="search-results">
     <h3>Search results...</h3>
     <%  if (searchResults.length == 0) { %>
-        <%= '...........' %>
+      <%= '...........' %>
     <% } else { %>
-        <% if(searchResults[0].id == -1) { %>
-            <%= 'No results found' %>
-        <% } else { %>
-        <% searchResults.forEach(src_rslt=> { %>
-            <div class="src_rslt">
-            <%= '--------------------' %> <br>
-            <%= src_rslt.id %>
-            <br>
-            <%= src_rslt.name %>
-            <br>
-            <input type="submit" class="approve-button" value="Approve">
-            <br>
-            <%= '--------------------' %>
-            </div>
-            <br>
-            <% }) %>
-        <% } %>
+      <% if(searchResults[0].id == -1) { %>
+        <%= 'No results found' %>
+      <% } else { %>
+      <% searchResults.forEach(src_rslt=> { %>
+        <div class="src_rslt">
+        <%= '--------------------' %> <br>
+        <%= src_rslt.id %>
+        <br>
+        <%= src_rslt.name %>
+        <br>
+        <input type="submit" class="approve-button" value="Approve">
+        <br>
+        <%= '--------------------' %>
+        </div>
+        <br>
+        <% }) %>
+      <% } %>
     <% } %>
 </div>
 
