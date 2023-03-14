@@ -13,10 +13,10 @@
     <div class="profile">
         <h2>ADMIN PROFILE</h2>
     </div>
-    <form action="/admin" method="POST">
+    <form action="/admin/searchUnapproved" method="GET">
         <div class="search">
             <h2>SEARCH STUDENT</h2>
-            <input type="text" class="search-box" id="gender" name="gender" placeholder="id">
+            <input type="text" class="search-box" id="id" name="id" placeholder="id">
             <br>
             <br>
             <input type="submit" class="search-btn" value="Search">
@@ -24,9 +24,8 @@
     </form>
     <br>
     <br>
-    <br>
     <div class="search-results">
-        <h3>Search results...</h3>
+        <h3>Unapproved Requests...</h3>
         <%  if (searchResults.length == 0) { %>
             <%= '...........' %>
         <% } else { %>
@@ -35,16 +34,19 @@
             <% } else { %>
             <% searchResults.forEach(src_rslt=> { %>
                 <div class="src_rslt">
-                    <%= '--------------------' %> <br>
-                        <%= src_rslt.id %>
-                            <br>
-                            <%= src_rslt.name %>
-                                <br>
-                                <%= src_rslt.description %>
-                                    <br>
-                                    <input type="submit" class="approve-button" value="Approve">
-                                    <br>
-                                    <%= '--------------------' %>
+                <%= '--------------------' %> <br>
+                <%= src_rslt.id %>
+                <br>
+                <%= src_rslt.studentId %>
+                <br>
+                <%= src_rslt.placeOfVisit %>
+                <br>
+                <%= src_rslt.purposeOfVisit %>
+                <br>
+                <br>
+                <input type="submit" class="approve-button" value="Approve">
+                <br>
+                <%= '--------------------' %>
                 </div>
                 <br>
                 <% }) %>

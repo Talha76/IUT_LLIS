@@ -1,4 +1,4 @@
-const {client} = require('../../config/database.config');
+const {client, pool} = require('../../config/database.config');
 
 const getAdminLogin = (req, res) => {
   res.render('../views/users/adminLogin.ejs')
@@ -8,22 +8,38 @@ const postAdminLogin = (req, res) => {
   res.send('<h1>Login Admin POST</h1>');
 };
 
-const getAdminIndex = (req, res, next) => {
+const getAdminIndex = async (req, res) => {
+  const query = 'select * from "leaveInfo" where "accepted" = false';
+  const search_results = [];
+  const clnt = await pool.connect();
+  await clnt.query(query)
+    .then((result) => {
+      result.rows.forEach(row => search_results.push(row));
+    })
+    .catch((err) => console.log(err + "Error hoise"))
+    .finally(() => clnt.release());
+
+  console.log(search_results);
+  if(search_results.length)
+    req.flash('search_results', search_results);
+  else 
+    req.flash('search_results');
   res.render('../views/users/adminDashboard.ejs', {searchResults: req.flash('search_results')});
 };
 const postAdminIndex = (req, res) => {
-  const {gender} = req.body;
+  const {id} = req.body;
 
   client.connect((err) => {
     console.log(err ? err + " = hello eror hoise": "Database Connected");
   });
   
   const query = {
-    text: 'select * from students where gender ilike $1',
-    values: [gender],
+    text: 'select * from students where id ilike $1',
+    values: [id],
   };
   // const query = `select * from "students" where gender = '${gender}'`;
   const search_results = [];
+  pool.conn;
   client.query(query, (err, result) => {
     if(err){
       console.log(err + 'EERRRRRROOOORRR');
@@ -45,16 +61,33 @@ const postAdminIndex = (req, res) => {
   });
 };
 
-const getSearchUnapproved = (req, res) => {
+const getSearchUnapproved = async (req, res) => {
   const {id} = req.query;
-  res.send(`id = ${id}`);
+  const query = `select * from "leaveInfo" where id = ${id}`;
+  const search_results = [];
+  const clnt = await pool.connect();
+  await clnt.query(query)
+    .then((result) => {
+      result.rows.forEach(row => search_results.push(row));
+    })
+    .catch((err) => console.log(err + " Error hoise"))
+    .finally(() => clnt.release());
+    console.log(search_results);
+  if(search_results.length)
+    req.flash('search_results', search_results);
+    else {
+      search_results.push({id : -1});
+      req.flash('search_results', search_results);
+  }
+  res.render('../views/users/searchUnapproved.ejs', {searchResults: req.flash('search_results')});
+
 };
+
 const postSearchUnapproved = (req, res) => {
 
 };
 const getSearchStudent = (req, res) => {
-  const {id} = req.query;
-  res.send(`id = ${id}`);
+
 };
 const postSearchStudent = (req, res) => {
 
