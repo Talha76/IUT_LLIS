@@ -1,5 +1,5 @@
 const getDashboard = (req, res) => {
-  res.send('<h1>Student Dashboard</h1>');
+  res.render('./users/studentDashboard.ejs', { student: req.user });
 }
 
 const getLogout = (req, res) => {
