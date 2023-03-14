@@ -3,14 +3,14 @@ const { pool } = require('../../config/database.config');
 async function getStudentById(id) {
   const query = `SELECT "students".*, "studentAuth".password `
               + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."id" `
-              + `where "students"."id" = ${id}`;
+              + `WHERE "students"."id" = ${id}`;
   return new Promise((resolve, reject) => {
     pool.connect()
       .then((client) => {
         client.query(query)
           .then((res) => {
             if (res.rows < 1) {
-              reject(new Error('Returning no rows'));
+              resolve(null);
             } else if (res.rows > 1) {
               reject(new Error('Returning multiple rows'));
             } else {

@@ -1,4 +1,4 @@
-const studentModel = require('../models/users/student.models');
+const studentModel = require('../models/users/student.model');
 
 describe('User model tests', () => {
   afterAll(() => {
