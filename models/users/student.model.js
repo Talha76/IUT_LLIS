@@ -2,7 +2,7 @@ const { pool } = require('../../config/database.config');
 
 async function getStudentById(id) {
   const query = `SELECT "students".*, "studentAuth".password `
-              + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."id" `
+              + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
               + `WHERE "students"."id" = ${id}`;
   return new Promise((resolve, reject) => {
     pool.connect()
