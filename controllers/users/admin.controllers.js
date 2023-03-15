@@ -9,7 +9,11 @@ const postAdminLogin = (req, res) => {
 };
 
 const getAdminIndex = async (req, res) => {
-  const query = 'select * from "leaveInfo" where "accepted" = false';
+  const query = `select * 
+                from "leaveInfo", "students"
+                where "leaveInfo"."supervisorStatus" = 'unapproved'
+                      and "students"."gender" ilike 'female'
+                      and "students"."id" = "leaveInfo"."studentId"`;
   const search_results = [];
   const clnt = await pool.connect();
   await clnt.query(query)
@@ -63,7 +67,14 @@ const postAdminIndex = (req, res) => {
 
 const getSearchUnapproved = async (req, res) => {
   const {id} = req.query;
-  const query = `select * from "leaveInfo" where id = ${id}`;
+  const query = `select * from "leaveInfo", "students"
+                 where "leaveInfo"."studentId" = "students"."id"
+                 and "leaveInfo"."studentId" = ${id}
+                 and "gender" ilike 'female'`;
+  // const query = {
+  //   text : `select * from "leaveInfo" where "leaveInfo.studentId" = $1`,
+  //   values : [id]
+  // };
   const search_results = [];
   const clnt = await pool.connect();
   await clnt.query(query)
