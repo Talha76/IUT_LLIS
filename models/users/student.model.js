@@ -26,9 +26,51 @@ async function getStudentById(id) {
   });
 }
 
+async function saveLeaveInfo(id, info) {
+  const query = `INSERT INTO "leaveInfo" ("studentId", "placeOfVisit", "purposeOfVisit", "departureDate", "arrivalDate", "contact", "guardianContact") `
+              + `VALUES (${id}, '${info.placeOfVisit}', '${info.purposeOfVisit}', '${info.departureDate}', '${info.arrivalDate}', `
+              + `'${info.studentContact}', '${info.contactPersonContact}')`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
+async function saveLateInfo(id, info) {
+  const query = `INSERT INTO "lateInfo" ("studentId", "placeOfVisit", "reason", "departureTime", "arrivalTime", "contact", "accompanyingPersonContact") `
+              + `VALUES (${id}, '${info.placeOfVisit}', '${info.lateReason}', '${info.departureTime}', '${info.arrivalTime}', `
+              + `'${info.studentContact}', '${info.accompanyingPersonContact}')`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 async function destroy() { pool.end(); }
 
 module.exports = {
   getStudentById,
+  saveLeaveInfo,
+  saveLateInfo,
   destroy,
 };
