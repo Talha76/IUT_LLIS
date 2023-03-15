@@ -68,8 +68,8 @@ const postAdminIndex = (req, res) => {
 const getSearchUnapproved = async (req, res) => {
   const {id} = req.query;
   const query = `select * from "leaveInfo", "students"
-                 where "leaveInfo"."studentId" = ${id}
-                 and "students"."id" = ${id}
+                 where "leaveInfo"."studentId" = "students"."id"
+                 and "leaveInfo"."studentId" = ${id}
                  and "gender" ilike 'female'`;
   // const query = {
   //   text : `select * from "leaveInfo" where "leaveInfo.studentId" = $1`,
