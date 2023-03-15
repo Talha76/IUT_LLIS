@@ -27,15 +27,23 @@
       <% } else { %>
       <% searchResults.forEach(src_rslt=> { %>
         <div class="src_rslt">
-        <%= '--------------------' %> <br>
-        <%= src_rslt.id %>
-        <br>
-        <%= src_rslt.name %>
-        <br>
-        <input type="submit" class="approve-button" value="Approve">
-        <br>
-        <%= '--------------------' %>
-        </div>
+          <%= '--------------------' %> <br>
+          <%= src_rslt.studentId %>
+          <br>
+          <%= src_rslt.name %>
+          <br>
+          <!-- <%= src_rslt.studentId %>
+          <br> -->
+          <%= src_rslt.placeOfVisit %>
+          <br>
+          <%= src_rslt.purposeOfVisit %>
+          <br>
+          <br>
+          <input type="submit" class="approve-button" value="Approve">
+          <input type="submit" class="Reject-button" value="Reject">
+          <br>
+          <%= '--------------------' %>
+          </div>
         <br>
         <% }) %>
       <% } %>
