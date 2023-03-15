@@ -28,7 +28,7 @@ module.exports = async (passport)=>{
             } return done(null, false, { message: 'Incorrect Password!' });
           }
         })
-        .catch((err) => console.error(err))
+        .catch((err) => done(err));
     })
   );
   passport.serializeUser((user, done)=>{
