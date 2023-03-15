@@ -1,7 +1,6 @@
 const localStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const studentModel = require('../models/users/student.model');
-const { Passport } = require('passport');
 
 module.exports = async (passport)=>{
   await passport.use(
@@ -9,7 +8,7 @@ module.exports = async (passport)=>{
       studentModel.getStudentById(id)
         .then((student) => {
           if (!student) {
-            return done(null,false,{message: 'Student ID not found!'});
+            return done(null, false, { message: 'Student ID not found!' });
           } else {
             // bcrypt.compare(password, student.password, (err, isMatch) => {
             //   if (err)
@@ -28,15 +27,17 @@ module.exports = async (passport)=>{
             } return done(null, false, { message: 'Incorrect Password!' });
           }
         })
-        .catch((err) => console.error(err))
+        .catch((err) => done(err));
     })
   );
-  passport.serializeUser((user, done)=>{
-    done(null, user.id);
-  })
-  passport.deserializeUser((id,done)=>{
+  passport.serializeUser((user, done) => done(null, user.id))
+  passport.deserializeUser((id, done) => {
     studentModel.getStudentById(id)
-      .then((student) => done(null, student))
-      .catch((err) => done(err, null));
+      .then((student) => {
+        return done(null, student);
+      })
+      .catch((err) => {
+        return done(err, null);
+      });
   })
 }

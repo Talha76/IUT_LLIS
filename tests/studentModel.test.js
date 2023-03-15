@@ -21,5 +21,4 @@ describe('User model tests', () => {
     expect(user.contactNo).toBeDefined();
     expect(user.password).toBeDefined();
   });
-
 });
