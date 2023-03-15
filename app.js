@@ -18,9 +18,9 @@ app.set('view engine', 'ejs');
 // Session and Flash
 app.use(
   session({
-    secret:'secret',
-    resave: true,
-    saveUninitalized : true,
+    secret: 'secret',
+    resave: false,
+    saveUninitalized : false,
   })
 );
 app.use(flash());
