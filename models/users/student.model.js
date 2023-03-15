@@ -46,10 +46,46 @@ async function saveLeaveInfo(id, info) {
   });
 }
 
+async function deleteLeaveInfo(leaveId) {
+  const query = `DELETE FROM "leaveInfo" WHERE "id" = ${leaveId}`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 async function saveLateInfo(id, info) {
   const query = `INSERT INTO "lateInfo" ("studentId", "placeOfVisit", "reason", "departureTime", "arrivalTime", "contact", "accompanyingPersonContact") `
               + `VALUES (${id}, '${info.placeOfVisit}', '${info.lateReason}', '${info.departureTime}', '${info.arrivalTime}', `
               + `'${info.studentContact}', '${info.accompanyingPersonContact}')`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
+async function deleteLateInfo(lateId) {
+  const query = `DELETE FROM "lateInfo" WHERE "id" = ${lateId}`;
   return new Promise((resolve, reject) => {
     pool.connect()
       .then((client) => {
@@ -71,6 +107,8 @@ async function destroy() { pool.end(); }
 module.exports = {
   getStudentById,
   saveLeaveInfo,
+  deleteLeaveInfo,
   saveLateInfo,
+  deleteLateInfo,
   destroy,
 };
