@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/adminStyle.css">
+  <title>Dashboard - Admin</title>
+</head>
+
+<body>
+  <div class="profile">
+    <h2>ADMIN PROFILE</h2>
+  </div>
+  <form action="/admin/searchUnapproved" method="GET">
+    <div class="search">
+      <h2>SEARCH STUDENT</h2>
+      <input type="text" class="search-box" id="id" name="id" placeholder="id">
+      <br>
+      <br>
+      <input type="submit" class="search-btn" value="Search">
+    </div>
+  </form>
+  <br>
+  <br>
+  <div class="search-results">
+    <h3>Unapproved Requests...</h3>
+    <%  if (searchResults.length == 0) { %>
+      <%= '...........' %>
+    <% } else { %>
+      <% if(searchResults[0].id == -1) { %>
+        <%= 'No results found' %>
+      <% } else { %>
+      <% searchResults.forEach(src_rslt=> { %>
+        <div class="src_rslt">
+        <%= '--------------------' %> <br>
+        <%= src_rslt.studentId %>
+        <br>
+        <%= src_rslt.name %>
+        <br>
+        <!-- <%= src_rslt.studentId %>
+        <br> -->
+        <%= src_rslt.placeOfVisit %>
+        <br>
+        <%= src_rslt.purposeOfVisit %>
+        <br>
+        <br>
+        <input type="submit" class="approve-button" value="Approve">
+        <input type="submit" class="Reject-button" value="Reject">
+        <br>
+        <%= '--------------------' %>
+        </div>
+        <br>
+        <% }) %>
+      <% } %>
+    <% } %>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.description-box {
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.description-box.show {
+  opacity: 1;
+  max-height: 100px;
+  transition: all 0.5s ease-in-out;
+}
