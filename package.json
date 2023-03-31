@@ -4,7 +4,7 @@
   "description": "A project on Leave and late form application and information management system",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --silent",
+    "test": "jest --verbose --silent --watchAll",
     "start": "nodemon index.js"
   },
   "repository": {

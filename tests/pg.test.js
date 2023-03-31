@@ -2,9 +2,9 @@ const { pool, client } = require('../config/database.config');
 
 describe('PostgreSQL integration tests', () => {
   test('client should connect to database', async () => {
+    const results = [];
     await client.connect();
     const query = 'SELECT NOW()';
-    const results = [];
     const res = await client.query(query);
     res.rows.forEach(row => results.push(row));
     await client.end();
