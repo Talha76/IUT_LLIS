@@ -22,6 +22,9 @@ const getAdminById = async (id) => {
   });
 }
 
+const destroy = async() => pool.end();
+
 module.exports = {
-  getAdminById
+  getAdminById,
+  destroy
 }
