@@ -1,4 +1,4 @@
-const ensureAuthenticated = (req, res, next) => {
+const ensureAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
@@ -6,7 +6,7 @@ const ensureAuthenticated = (req, res, next) => {
   res.redirect('/');
 };
 
-const ensureNotAuthenticated = (req, res, next) => {
+const ensureNotAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     req.flash('error', 'Access Denied!');
     return res.redirect('/student/dashboard');
@@ -14,7 +14,25 @@ const ensureNotAuthenticated = (req, res, next) => {
   next();
 };
 
+const ensureAdminAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  req.flash('error', 'Access Denied!');
+  res.redirect('/admin');
+};
+
+const ensureAdminNotAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    req.flash('error', 'Access Denied!');
+    return res.redirect('/admin/dashboard');
+  }
+  next();
+}
+
 module.exports = {
-  ensureAuthenticated,
-  ensureNotAuthenticated,
+  ensureAuth,
+  ensureNotAuth,
+  ensureAdminAuth,
+  ensureAdminNotAuth
 };

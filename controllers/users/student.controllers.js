@@ -1,7 +1,7 @@
-const studentModel = require('../../models/users/student.model');
+const studentModel = require('../../models/student.model');
 
 const getDashboard = (req, res) => {
-  res.render('./users/studentDashboard.ejs', {
+  res.render('users/studentDashboard.ejs', {
     student: req.user,
     success: req.flash('success'),
   });
