@@ -1,4 +1,4 @@
-const { pool } = require('../../config/database.config');
+const { pool } = require('../config/database.config');
 
 const getStudentById = async (id) => {
   const query = `SELECT "students".*, "studentAuth".password `
@@ -9,17 +9,13 @@ const getStudentById = async (id) => {
       .then((client) => {
         client.query(query)
           .then((res) => {
-            if (res.rows < 1) {
+            if (res.rowCount < 1) {
               resolve(null);
-            } else if (res.rows > 1) {
-              reject(new Error('Returning multiple rows'));
             } else {
               resolve(res.rows[0]);
             }
           })
-          .catch((err) => {
-            reject(err);
-          })
+          .catch((err) => reject(err))
           .finally(() => client.release());
       })
       .catch((err) => reject(err));
@@ -66,11 +62,8 @@ const saveLateInfo = async (id, info) => {
   });
 }
 
-async function destroy() { pool.end(); }
-
 module.exports = {
   getStudentById,
   saveLeaveInfo,
-  saveLateInfo,
-  destroy
+  saveLateInfo
 };
