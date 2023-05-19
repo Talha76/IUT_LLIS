@@ -1,18 +1,15 @@
 const localStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
-const studentModel = require('../models/student.model');
+const adminModel = require('../models/admin.model');
 
 module.exports = async (passport) => {
-  await passport.use(
+  await passport.use('local2',
     new localStrategy({usernameField: 'admin-id'}, (id, password, done) => {
-      studentModel.getStudentById(id)
+      adminModel.getAdminById(id)
         .then((user) => {
           if (!user) {
-            return done(null, false, { message: 'Student ID not found!' });
+            return done(null, false, { message: 'Admin ID not found!' });
           } else {
-            if (user.gender === 'Male') {
-              return done(null, false, { message: 'Access denied!' });
-            }
             bcrypt.compare(password, user.password)
               .then((isMatch) => {
                 if (isMatch) {
@@ -21,7 +18,7 @@ module.exports = async (passport) => {
                   return done(null, false, { message:'Password incorrect' });
                 }
               })
-              .catch((err) => console.error(err));
+              .catch((err) => done(err));
           }
         })
         .catch((err) => done(err));
@@ -31,7 +28,7 @@ module.exports = async (passport) => {
   passport.serializeUser((user, done) => done(null, user.id));
 
   passport.deserializeUser((id, done) => {
-    studentModel.getStudentById(id)
+    adminModel.getAdminById(id)
       .then((user) => {
         return done(null, user);
       })

@@ -12,13 +12,20 @@
   <h1>Hello Admins, welcome IUT LLIS</h1>
   <div class="login">
     <h2>LOGIN with your admin ID password</h2>
-    <p>Enter admin id</p>
-    <input type="text" class="login-box" id="admin-id" name="admin-id">
-    <p>Enter Password</p>
-    <input type="text" class="login-box" id="password" name="password">
-    <br>
-    <br>
-    <input type="submit" class="login-btn" value="Login">
+    <% if (error.length > 0) { %>
+      <div class="alert alert-message">
+        <%= error %>
+      </div>
+    <% } %>
+    <form action="/admin" method="post">
+      <p>Enter admin id</p>
+      <input type="text" class="login-box" id="admin-id" name="admin-id">
+      <p>Enter Password</p>
+      <input type="text" class="login-box" id="password" name="password">
+      <br>
+      <br>
+      <input type="submit" class="login-btn" value="Login">
+    </form>
   </div>
 </body>
 

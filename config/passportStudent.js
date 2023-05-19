@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const studentModel = require('../models/student.model');
 
 module.exports = async (passport) => {
-  await passport.use(
+  await passport.use('local1',
     new localStrategy({usernameField: 'id'}, (id, password, done) => {
       studentModel.getStudentById(id)
         .then((user) => {
@@ -21,7 +21,7 @@ module.exports = async (passport) => {
                   return done(null, false, { message:'Password incorrect' });
                 }
               })
-              .catch((err) => console.error(err));
+              .catch((err) => done(err));
           }
         })
         .catch((err) => done(err));
