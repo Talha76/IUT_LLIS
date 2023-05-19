@@ -1,4 +1,4 @@
-const studentModel = require('../models/users/student.model');
+const studentModel = require('../models/student.model');
 
 describe('User model tests', () => {
   afterAll(() => studentModel.destroy() );
