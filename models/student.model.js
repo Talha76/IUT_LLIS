@@ -62,8 +62,11 @@ const saveLateInfo = async (id, info) => {
   });
 }
 
+const destroy = async() => pool.end();
+
 module.exports = {
   getStudentById,
   saveLeaveInfo,
-  saveLateInfo
+  saveLateInfo,
+  destroy
 };
