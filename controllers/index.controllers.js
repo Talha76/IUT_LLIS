@@ -1,4 +1,3 @@
-const bcrypt =require("bcryptjs");
 const passport = require("passport");
 
 const getIndex = (req, res) => {
@@ -9,7 +8,7 @@ const getIndex = (req, res) => {
 };
 
 const postIndex = (req, res, next) => {
-  passport.authenticate('local', {
+  passport.authenticate('local1', {
     successRedirect:'/student/dashboard',
     failureRedirect:'/',
     successFlash: true,
