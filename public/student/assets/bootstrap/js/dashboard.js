@@ -20,8 +20,8 @@ function getDescriptionBox(val) {
   }
 }
 
-$(document).ready(function(){
-  $(".alert-dismissible").fadeTo(5000, 0, function(){
-    $(this).alert('close');
-  });
+$(document).ready(() => {
+  setTimeout(() => {
+    $('.alert-dismissible').fadeOut('slow');
+  }, 3000);
 });
