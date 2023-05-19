@@ -1,6 +1,6 @@
 const { pool } = require('../../config/database.config');
 
-async function getStudentById(id) {
+const getStudentById = async (id) => {
   const query = `SELECT "students".*, "studentAuth".password `
               + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
               + `WHERE "students"."id" = ${id}`;
@@ -26,9 +26,51 @@ async function getStudentById(id) {
   });
 }
 
+const saveLeaveInfo = async (id, info) => {
+  const query = `INSERT INTO "leaveInfo" ("studentId", "placeOfVisit", "purposeOfVisit", "departureDate", "arrivalDate", "contact", "guardianContact") `
+              + `VALUES (${id}, '${info.placeOfVisit}', '${info.purposeOfVisit}', '${info.departureDate}', '${info.arrivalDate}', `
+              + `'${info.studentContact}', '${info.contactPersonContact}')`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
+const saveLateInfo = async (id, info) => {
+  const query = `INSERT INTO "lateInfo" ("studentId", "placeOfVisit", "reason", "departureTime", "arrivalTime", "contact", "accompanyingPersonContact") `
+              + `VALUES (${id}, '${info.placeOfVisit}', '${info.lateReason}', '${info.departureTime}', '${info.arrivalTime}', `
+              + `'${info.studentContact}', '${info.accompanyingPersonContact}')`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query, (err, res) => {
+          client.release();
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 async function destroy() { pool.end(); }
 
 module.exports = {
   getStudentById,
-  destroy,
+  saveLeaveInfo,
+  saveLateInfo,
+  destroy
 };
