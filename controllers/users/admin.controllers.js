@@ -1,14 +1,14 @@
 const {client, pool} = require('../../config/database.config');
 
-const getAdminLogin = (req, res) => {
-  res.render('../views/users/adminLogin.ejs')
+const getAdminIndex = (req, res) => {
+  res.render('users/adminLogin.ejs');
 };
 
-const postAdminLogin = (req, res) => {
-  res.send('<h1>Login Admin POST</h1>');
+const postAdminIndex = (req, res) => {
+  res.send('<h1>Index Admin POST</h1>');
 };
 
-const getAdminIndex = async (req, res) => {
+const getAdminDashboard = async (req, res) => {
   const query = `select * 
                 from "leaveInfo", "students"
                 where "leaveInfo"."supervisorStatus" = 'unapproved'
@@ -28,9 +28,9 @@ const getAdminIndex = async (req, res) => {
     req.flash('search_results', search_results);
   else 
     req.flash('search_results');
-  res.render('../views/users/adminDashboard.ejs', {searchResults: req.flash('search_results')});
+  res.render('../views/users/adminDashboard.ejs', { searchResults: req.flash('search_results') });
 };
-const postAdminIndex = (req, res) => {
+const postAdminDashboard = (req, res) => {
   const {id} = req.body;
 
   client.connect((err) => {
@@ -105,10 +105,10 @@ const postSearchStudent = (req, res) => {
 };
 
 module.exports = {
-  getAdminLogin, 
-  postAdminLogin,
-  getAdminIndex,
+  getAdminIndex, 
   postAdminIndex,
+  getAdminDashboard,
+  postAdminDashboard,
   getSearchUnapproved,
   postSearchUnapproved,
   getSearchStudent,
