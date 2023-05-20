@@ -116,7 +116,6 @@ const getDetails = async (req, res) => {
   });
 };
 const getSearchStudent = (req, res) => {
-  const id = typeof req.query.id === 'undefined' ? '' : req.query.id;
   
 };
 
