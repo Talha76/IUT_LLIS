@@ -26,19 +26,22 @@ const getAdminDashboard = async (req, res) => {
                    and "students"."id" = "leaveInfo"."studentId"
                    and "students"."id"::text like '%' || trim('${id}') || '%'`;
   const search_results = [];
-  const clnt = await pool.connect();
-  await clnt.query(query)
+  const client = await pool.connect();
+  await client.query(query)
     .then((result) => {
       result.rows.forEach(row => search_results.push(row));
     })
     .catch((err) => console.error(err))
-    .finally(() => clnt.release());
+    .finally(() => client.release());
 
   if(search_results.length)
     req.flash('search_results', search_results);
   else 
     req.flash('search_results');
-  res.render('../views/users/adminDashboard.ejs', { searchResults: req.flash('search_results') });
+  res.render('./users/adminDashboard.ejs', {
+    user: req.user,
+    searchResults: req.flash('search_results')
+  });
 };
 
 const getLogout = async (req, res) => {
