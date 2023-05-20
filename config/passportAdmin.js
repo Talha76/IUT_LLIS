@@ -3,10 +3,10 @@ const bcrypt = require('bcryptjs');
 const adminModel = require('../models/admin.model');
 
 module.exports = async (passport) => {
-  await passport.use('local2',
-    new localStrategy({usernameField: 'admin-id'}, (id, password, done) => {
+  await passport.use('localAdmin',
+    new localStrategy({ usernameField: 'admin-id' }, (id, password, done) => {
       adminModel.getAdminById(id)
-        .then((user) => {
+      .then((user) => {
           if (!user) {
             return done(null, false, { message: 'Admin ID not found!' });
           } else {

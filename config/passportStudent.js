@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 const studentModel = require('../models/student.model');
 
 module.exports = async (passport) => {
-  await passport.use('local1',
-    new localStrategy({usernameField: 'id'}, (id, password, done) => {
+  await passport.use('localStudent',
+    new localStrategy({ usernameField: 'id' }, (id, password, done) => {
       studentModel.getStudentById(id)
         .then((user) => {
           if (!user) {
