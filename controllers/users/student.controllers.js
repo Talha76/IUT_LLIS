@@ -29,9 +29,14 @@ const postLateSave = async (req, res) => {
   res.redirect('/student/dashboard');
 }
 
+const getHistory = async (req, res) => {
+  res.render('users/studentHistory.ejs');
+}
+
 module.exports = {
   getDashboard,
   getLogout,
   postLeaveSave,
   postLateSave,
+  getHistory
 };
