@@ -1,7 +1,7 @@
 const { pool } = require('../config/database.config');
 
 const getAdminById = async (id) => {
-  const query = `SELECT * FROM "adminAuth"`
+  const query = `SELECT "id", "name", "email", "password", "adminType" as "role" FROM "adminAuth"`
               + `WHERE "id" = ${id}`;
   
   return new Promise((resolve, reject) => {

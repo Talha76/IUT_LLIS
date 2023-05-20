@@ -1,6 +1,6 @@
 const localStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
-const adminModel = require('../models/admin.model');
+const adminModel = require('../models/hallAdmin.model');
 
 module.exports = async (passport) => {
   await passport.use('localAdmin',
