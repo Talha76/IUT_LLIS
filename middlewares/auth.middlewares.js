@@ -1,5 +1,5 @@
 const ensureAuth = (req, res, next) => {
-  if (req.isAuthenticated() && req.user.role === 'student') {
+  if (req.isAuthenticated()) {
     return next();
   }
   req.flash('error', 'Access Denied!');
@@ -15,7 +15,8 @@ const ensureNotAuth = (req, res, next) => {
 };
 
 const ensureAdminAuth = (req, res, next) => {
-  if (req.isAuthenticated() && (req.user.role === 'provost' || req.user.role === 'supervisor')) {
+  console.log(req.user);
+  if (req.isAuthenticated()) {
     return next();
   }
   req.flash('error', 'Access Denied!');

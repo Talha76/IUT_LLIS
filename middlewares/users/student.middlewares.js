@@ -19,8 +19,18 @@ const indexPassportAuth = (req, res, next) => {
   })(req, res, next);
 }
 
+const isStudent = (req, res, next) => {
+  if (req.user && req.user.role === 'student') {
+    return next();
+  }
+
+  req.flash('error', 'Access Denied!');
+  res.send(403).send('Unauthorized');
+}
+
 module.exports = {
   authenticateLeaveData,
   authenticateLateData,
-  indexPassportAuth
+  indexPassportAuth,
+  isStudent
 }
