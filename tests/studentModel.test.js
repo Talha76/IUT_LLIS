@@ -18,6 +18,7 @@ describe('User model tests', () => {
     expect(user.country).toBeDefined();
     expect(user.contactNo).toBeDefined();
     expect(user.password).toBeDefined();
+    expect(user.role).toBe('student');
   });
 
 });
