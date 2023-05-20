@@ -1,4 +1,4 @@
-const adminModel = require('../models/admin.model');
+const adminModel = require('../models/hallAdmin.model');
 
 describe('Admin model tests', () => {
   afterAll(() => adminModel.destroy() );
