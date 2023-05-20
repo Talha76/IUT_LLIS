@@ -1,0 +1,629 @@
+<div
+  class="tab-pane active"
+  role="tabpanel"
+  id="tab-1"
+  style="background: #f0f8ff; width: 100%"
+>
+  <div
+    style="
+      display: flex;
+      --bs-body-bg: var(--bs-danger);
+      background: #f0f8ff;
+      width: 100%;
+    "
+  >
+    <form
+      class="ps-lg-0"
+      style="
+        display: block;
+        background: #f0f8ff;
+        border-color: var(--bs-highlight-bg);
+        transform: translate(180px);
+      "
+    >
+      <label
+        class="form-label"
+        style="
+          margin-left: 15px;
+          color: var(--bs-gray-900);
+          font-family: ABeeZee, sans-serif;
+          font-size: 25px;
+          text-align: left;
+          margin-right: 0px;
+        "
+        ><strong>Student ID</strong></label
+      ><label
+        class="form-label"
+        style="
+          color: var(--bs-black);
+          font-size: 25px;
+          margin-left: 40px;
+          font-family: ABeeZee, sans-serif;
+          text-align: center;
+        "
+        ><strong>From</strong></label
+      ><label
+        class="form-label"
+        style="
+          color: var(--bs-black);
+          font-size: 25px;
+          margin-left: 110px;
+          font-family: ABeeZee, sans-serif;
+        "
+        ><strong>To</strong></label
+      >
+      <div style="display: flex; background: #f0f8ff">
+        <input
+          class="form-control"
+          type="search"
+          id="studentId"
+          placeholder="search id"
+          name="studentId"
+        /><input
+          class="form-control form-control-sm"
+          id="from"
+          type="date"
+          style="margin-left: 10px"
+          name="from"
+        /><input
+          class="form-control form-control-sm"
+          id="to"
+          type="date"
+          style="margin-left: 10px"
+          name="to"
+        />
+      </div>
+    </form>
+  </div>
+  <div
+    style="
+      background: #f0f8ff;
+      position: sticky;
+      overflow: auto;
+      height: 700px;
+      border: 8px none #f0f8ff;
+      font-size: 40px;
+    "
+  >
+    <label
+      class="form-label"
+      style="
+        font-family: ABeeZee, sans-serif;
+        background: #f0f8ff;
+        transform: translate(0px) translateY(0px) scale(1.8);
+        font-size: 15px;
+        width: 20%;
+        margin-bottom: 15px;
+        margin-left: 40%;
+        text-align: center;
+      "
+      >Students' Log</label
+    >
+    <div
+      class="table-responsive"
+      style="
+        height: 400px;
+        width: 76%;
+        font-size: 16px;
+        border-radius: 10px;
+        border-width: 2px;
+        border-top-left-radius: 10px;
+        background: var(--bs-white);
+        box-shadow: 0px 0px 10px 3px var(--bs-gray-600);
+        position: relative;
+        text-align: left;
+        margin: 0;
+        font-family: ABeeZee, sans-serif;
+        overflow: scroll;
+        transform: perspective(0px) translate(0px);
+        padding: 2%;
+        padding-top: 25px;
+        margin-right: 12%;
+        margin-left: 12%;
+      "
+    >
+      <table class="table">
+        <thead style="position: static">
+          <tr
+            style="
+              position: sticky;
+              top: 0;
+              font-size: 16px;
+              width: 50%;
+              height: 54px;
+              padding-right: 0px;
+            "
+          >
+            <th style="width: 20%; background: var(--bs-gray-500)">Leave ID</th>
+            <th
+              style="
+                position: sticky;
+                width: 20%;
+                border-style: solid;
+                border-color: var(--bs-gray-400);
+                background: var(--bs-gray-500);
+                height: 55px;
+              "
+            >
+              Time
+            </th>
+            <th
+              style="
+                position: sticky;
+                width: 20%;
+                border-style: solid;
+                border-color: var(--bs-gray-400);
+                background: var(--bs-gray-500);
+              "
+            >
+              Id
+            </th>
+            <th
+              style="
+                width: 20%;
+                border-color: var(--bs-table-border-color);
+                background: var(--bs-gray-500);
+              "
+            >
+              Name
+            </th>
+            <th style="width: 20%; background: var(--bs-gray-500)">Reason</th>
+            <th style="width: 20%; background: var(--bs-gray-500)">Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/admin/details">leave Id</a></td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 01</a>
+            </td>
+            <td>Cell 02</td>
+            <td>Cell 03</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 11</a>
+            </td>
+            <td>Cell 12</td>
+            <td>Cell 13</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group" style="font-size: 16px">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 21</a>
+            </td>
+            <td>Cell 22</td>
+            <td>Cell 23</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 31</a>
+            </td>
+            <td>Cell 32</td>
+            <td>Cell 33</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 41</a>
+            </td>
+            <td>Cell 42</td>
+            <td>Cell 43</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 51</a>
+            </td>
+            <td>Cell 52</td>
+            <td>Cell 53</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 61</a>
+            </td>
+            <td>Cell 62</td>
+            <td>Cell 63</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 71</a>
+            </td>
+            <td>Cell 72</td>
+            <td>Cell 73</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 81</a>
+            </td>
+            <td>Cell 82</td>
+            <td>Cell 83</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #008000"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Text</td>
+            <td style="text-decoration: underline">
+              <a href="#">Cell 91</a>
+            </td>
+            <td>Cell 92</td>
+            <td>Cell 93</td>
+            <td><a href="#">Details</a></td>
+            <td>
+              <div class="btn-group" role="group">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="font-size: 10px; background: #279627"
+                >
+                  Approve</button
+                ><button
+                  class="btn btn-primary"
+                  type="button"
+                  style="
+                    transform: translate(25%);
+                    font-size: 10px;
+                    background: var(--bs-red);
+                  "
+                >
+                  Reject
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
