@@ -7,6 +7,6 @@ const studentModules = require('../../controllers/users/student.controllers');
 router.get('/dashboard', ensureAuth, studentModules.getDashboard);
 router.post('/leave-save', ensureAuth, studentMiddlewares.authenticateLeaveData, studentModules.postLeaveSave); 
 router.post('/late-save', ensureAuth, studentMiddlewares.authenticateLateData, studentModules.postLateSave);
-router.get('/logout', studentModules.getLogout);
-router.get('/history', studentModules.getHistory);
+router.get('/logout', ensureAuth, studentModules.getLogout);
+router.get('/history', ensureAuth, studentModules.getHistory);
 module.exports = router;
