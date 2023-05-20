@@ -54,5 +54,4 @@ app.use('/student', studentRoutes);
 
 const adminRoutes = require('./routes/users/admin.routes');
 app.use('/admin', adminRoutes);
-
 module.exports = app;

@@ -13,12 +13,15 @@
 <body style="font-size: 40px;color: #f0f8ff;background: #F0F8FF;width: 100%;">
     <nav class="navbar navbar-light navbar-expand-md py-3" style="width: 100%;height: 160px;margin-top: 0px;">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/IUT_LOGO.png" width="87" height="106"><span style="font-size: 40px;"><strong>IUT </strong>LLIS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-2">
+            <div class="collapse navbar-collapse" id="navcol-2" style="font-size: 40px;">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-size: 23px;">Admin xyz</a></li>
+                    <li class="nav-item"></li>
+                    <div class="btn-group open"><button class="btn btn-primary" id="username" type="button" name="userName">Admin xyz</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true" type="button"></button>
+                        <div class="dropdown-menu show" data-bs-popper="none" id="logout" name="logout"><a class="dropdown-item" id="resetPassword" href="#" name="resetPassword">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
+                    </div>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary ms-md-2" role="button" href="/admin/logout" style="font-size: 12px;">Logout</a>
+                </ul>
             </div>
         </div>
     </nav>
@@ -31,7 +34,7 @@
             <div class="tab-pane active" role="tabpanel" id="tab-1" style="background: #f0f8ff;width: 100%;">
                 <div style="display: flex;--bs-body-bg: var(--bs-danger);background: #F0F8FF;width: 100%;">
                     <form class="ps-lg-0" style="display: block;background: #F0F8FF;border-color: var(--bs-highlight-bg);transform: translate(180px);"><label class="form-label" style="margin-left: 15px;color: var(--bs-gray-900);font-family: ABeeZee, sans-serif;font-size: 25px;text-align: left;margin-right: 0px;"><strong>Student ID</strong></label><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 40px;font-family: ABeeZee, sans-serif;text-align: center;"><strong>From</strong></label><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 110px;font-family: ABeeZee, sans-serif;"><strong>To</strong></label>
-                        <div style="display: flex;background: #F0F8FF;"><input class="form-control" type="search" name="studentId" id="studentId" placeholder="Student Id"><input class="form-control form-control-sm" type="date" style="margin-left: 10px;" name="from" id="from"><input class="form-control form-control-sm" type="date" style="margin-left: 10px;" name="to" id="to"></div>
+                        <div style="display: flex;background: #F0F8FF;"><input class="form-control" type="search" id="studentId" placeholder="search id" name="studentId"><input class="form-control form-control-sm" id="from" type="date" style="margin-left: 10px;" name="from"><input class="form-control form-control-sm" id="to" type="date" style="margin-left: 10px;" name="to"></div>
                     </form>
                 </div>
                 <div style="background: #F0F8FF;position: sticky;overflow: auto;height: 700px;border: 8px none #F0F8FF;font-size: 40px;"><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;width: 20%;margin-bottom: 15px;margin-left: 40%;text-align: center;">Students' Log</label>
@@ -39,11 +42,12 @@
                         <table class="table">
                             <thead style="position: static;">
                                 <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
-                                    <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
-                                    <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
-                                    <th style="width: 25%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
-                                    <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
-                                    <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
+                                    <th style="width: 20%;background: var(--bs-gray-500);">Leave ID</th>
+                                    <th style="position: sticky;width: 20%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
+                                    <th style="position: sticky;width: 20%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
+                                    <th style="width: 20%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
+                                    <th style="width: 20%;background: var(--bs-gray-500);">Reason</th>
+                                    <th style="width: 20%;background: var(--bs-gray-500);">Verdict</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,6 +56,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 01</a></td>
                                     <td>Cell 02</td>
                                     <td>Cell 03</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -61,6 +66,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 11</a></td>
                                     <td>Cell 12</td>
                                     <td>Cell 13</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group" style="font-size: 16px;"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -70,6 +76,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 21</a></td>
                                     <td>Cell 22</td>
                                     <td>Cell 23</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -79,6 +86,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 31</a></td>
                                     <td>Cell 32</td>
                                     <td>Cell 33</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -88,6 +96,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 41</a></td>
                                     <td>Cell 42</td>
                                     <td>Cell 43</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -97,6 +106,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 51</a></td>
                                     <td>Cell 52</td>
                                     <td>Cell 53</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -106,6 +116,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 61</a></td>
                                     <td>Cell 62</td>
                                     <td>Cell 63</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -115,6 +126,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 71</a></td>
                                     <td>Cell 72</td>
                                     <td>Cell 73</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -124,6 +136,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 81</a></td>
                                     <td>Cell 82</td>
                                     <td>Cell 83</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -133,6 +146,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -142,6 +156,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -151,6 +166,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -160,6 +176,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -169,6 +186,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #008000;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -178,6 +196,7 @@
                                     <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                     <td>Cell 92</td>
                                     <td>Cell 93</td>
+                                    <td><a href="#">Details</a></td>
                                     <td>
                                         <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 10px;background: #279627;">Approve</button><button class="btn btn-primary" type="button" style="transform: translate(25%);font-size: 10px;background: var(--bs-red);">Reject</button></div>
                                     </td>
@@ -190,35 +209,38 @@
             <div class="tab-pane" role="tabpanel" id="tab-2" style="background: #f0f8ff;width: 100%;">
                 <div style="display: flex;--bs-body-bg: var(--bs-danger);background: #F0F8FF;width: 100%;">
                     <form class="ps-lg-0" style="display: block;background: #F0F8FF;border-color: var(--bs-highlight-bg);transform: translate(180px);"><label class="form-label" style="margin-left: 15px;color: var(--bs-gray-900);font-family: ABeeZee, sans-serif;font-size: 25px;text-align: left;margin-right: 0px;"><strong>Student ID</strong></label><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 40px;font-family: ABeeZee, sans-serif;text-align: center;"><strong>From</strong></label><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 110px;font-family: ABeeZee, sans-serif;"><strong>To</strong></label>
-                        <div style="display: flex;background: #F0F8FF;"><input class="form-control" type="search" name="studentId" id="studentId" placeholder="Student Id"><input class="form-control form-control-sm" type="date" style="margin-left: 10px;" name="from" id="from"><input class="form-control form-control-sm" type="date" style="margin-left: 10px;" name="to" id="to"></div>
+                        <div style="display: flex;background: #F0F8FF;"><input class="form-control" type="search" id="studentId" placeholder="search id" name="studentId"><input class="form-control form-control-sm" id="from" type="date" style="margin-left: 10px;" name="from"><input class="form-control form-control-sm" id="to" type="date" style="margin-left: 10px;" name="to"></div>
                     </form>
                 </div>
                 <div style="background: #F0F8FF;position: sticky;overflow: visible;height: 700px;border: 8px none #F0F8FF;font-size: 40px;width: 100%;">
-                    <div><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;">Leave History</label>
+                    <div id="time" name="time"><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;color: var(--bs-black);">Leave History</label>
                         <div class="table-responsive" style="height: 400px;width: 76%;font-size: 16px;border-radius: 10px;border-width: 2px;border-top-left-radius: 10px;background: var(--bs-white);box-shadow: 0px 0px 10px 3px var(--bs-gray-600);position: relative;text-align: left;font-family: ABeeZee, sans-serif;overflow: scroll;transform: perspective(0px) translate(0px);padding: 2%;padding-top: 25px;margin-left: 12%;margin-right: 12%;">
                             <table class="table">
                                 <thead style="position: static;">
                                     <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
-                                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
-                                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
-                                        <th style="width: 25%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
-                                        <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
-                                        <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Leave Id</th>
+                                        <th style="position: sticky;width: 16.5%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
+                                        <th style="position: sticky;width: 16.5%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
+                                        <th style="width: 16.5%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Reason</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Verdict</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Text</td>
+                                        <td id="time" name="time">Text</td>
                                         <td style="text-decoration: underline;"><a href="#">Cell 01</a></td>
                                         <td>Cell 02</td>
                                         <td>Cell 03</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
-                                        <td>Text</td>
+                                        <td id="time" name="time">Text</td>
                                         <td style="text-decoration: underline;"><a href="#">Cell 11</a></td>
                                         <td>Cell 12</td>
                                         <td>Cell 13</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
                                         </td>
@@ -228,6 +250,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 21</a></td>
                                         <td>Cell 22</td>
                                         <td>Cell 23</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -235,6 +258,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 31</a></td>
                                         <td>Cell 32</td>
                                         <td>Cell 33</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -242,6 +266,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 41</a></td>
                                         <td>Cell 42</td>
                                         <td>Cell 43</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Approved
                                         </td>
@@ -251,6 +276,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 51</a></td>
                                         <td>Cell 52</td>
                                         <td>Cell 53</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -258,6 +284,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 61</a></td>
                                         <td>Cell 62</td>
                                         <td>Cell 63</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -265,6 +292,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 71</a></td>
                                         <td>Cell 72</td>
                                         <td>Cell 73</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Approved
                                         </td>
@@ -274,6 +302,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 81</a></td>
                                         <td>Cell 82</td>
                                         <td>Cell 83</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -281,6 +310,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -288,6 +318,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -297,6 +328,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -306,6 +338,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -315,6 +348,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -322,22 +356,24 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Rejected</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div><button class="btn btn-primary" type="button" style="transform: translate(0px) translateX(0px);margin-left: 40%;width: 20%;margin-right: 40%;">Generate Report</button>
                     </div>
-                    <div style="margin-top: 15px;margin-left: 0px;margin-bottom: 0px;height: 600px;"><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;">Late History</label>
+                    <div style="margin-top: 15px;margin-left: 0px;margin-bottom: 0px;height: 600px;"><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;color: var(--bs-black);">Late History</label>
                         <div class="table-responsive" style="height: 400px;width: 76%;font-size: 16px;border-radius: 10px;border-width: 2px;border-top-left-radius: 10px;background: var(--bs-white);box-shadow: 0px 0px 10px 3px var(--bs-gray-600);position: relative;text-align: left;font-family: ABeeZee, sans-serif;overflow: scroll;transform: perspective(0px) translate(0px);padding: 2%;padding-top: 25px;margin-left: 12%;margin-right: 12%;">
                             <table class="table">
                                 <thead style="position: static;">
                                     <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
-                                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
-                                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
-                                        <th style="width: 25%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
-                                        <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
-                                        <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Details</th>
+                                        <th style="position: sticky;width: 16.5%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
+                                        <th style="position: sticky;width: 16.5%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);">Id</th>
+                                        <th style="width: 16.5%;border-color: var(--bs-table-border-color);background: var(--bs-gray-500);">Name</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Reason</th>
+                                        <th style="width: 16.5%;background: var(--bs-gray-500);">Verdict</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -346,6 +382,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 01</a></td>
                                         <td>Cell 02</td>
                                         <td>Cell 03</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -353,6 +390,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 11</a></td>
                                         <td>Cell 12</td>
                                         <td>Cell 13</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
                                         </td>
@@ -362,6 +400,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 21</a></td>
                                         <td>Cell 22</td>
                                         <td>Cell 23</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -369,6 +408,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 31</a></td>
                                         <td>Cell 32</td>
                                         <td>Cell 33</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -376,6 +416,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 41</a></td>
                                         <td>Cell 42</td>
                                         <td>Cell 43</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Approved
                                         </td>
@@ -385,6 +426,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 51</a></td>
                                         <td>Cell 52</td>
                                         <td>Cell 53</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -392,6 +434,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 61</a></td>
                                         <td>Cell 62</td>
                                         <td>Cell 63</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -399,6 +442,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 71</a></td>
                                         <td>Cell 72</td>
                                         <td>Cell 73</td>
+                                        <td><a href="#">Details</a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Approved
                                         </td>
@@ -408,6 +452,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 81</a></td>
                                         <td>Cell 82</td>
                                         <td>Cell 83</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -415,6 +460,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -422,6 +468,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -431,6 +478,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -440,6 +488,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>
                                             <div class="btn-group" role="group"></div>Rejected
                                         </td>
@@ -449,6 +498,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Approved</td>
                                     </tr>
                                     <tr>
@@ -456,6 +506,7 @@
                                         <td style="text-decoration: underline;"><a href="#">Cell 91</a></td>
                                         <td>Cell 92</td>
                                         <td>Cell 93</td>
+                                        <td><a href="#"><span style="color: var(--bs-link-hover-color);">Details</span></a></td>
                                         <td>Rejected</td>
                                     </tr>
                                 </tbody>
