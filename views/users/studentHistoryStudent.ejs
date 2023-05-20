@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" style="color: var(--bs-black);background: var(--bs-white);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>studentHistoryStudent</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body style="font-size: 40px;color: var(--bs-black);background: #F0F8FF;width: 100%;">
+    <nav class="navbar navbar-light navbar-expand-md py-3" style="width: 100%;height: 160px;margin-top: 0px;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/IUT_LOGO.png" width="87" height="106"><span style="font-size: 40px;"><strong>IUT </strong>LLIS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item dropdown show"><a class="dropdown-toggle nav-link" aria-expanded="true" data-bs-toggle="dropdown" href="#" style="font-size: 25px;">Student</a>
+                        <div class="dropdown-menu show" data-bs-popper="none"><a class="dropdown-item" href="#">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
+                    </li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="display: flex;--bs-body-bg: var(--bs-danger);background: #F0F8FF;width: 100%;">
+        <form class="ps-lg-0" style="display: block;background: #F0F8FF;border-color: var(--bs-highlight-bg);transform: translate(180px);"><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 40px;font-family: ABeeZee, sans-serif;text-align: center;"><strong>From</strong></label><label class="form-label" style="color: var(--bs-black);font-size: 25px;margin-left: 110px;font-family: ABeeZee, sans-serif;"><strong>To</strong></label>
+            <div style="display: flex;background: #F0F8FF;"><input class="form-control form-control-sm" id="from" type="date" style="margin-left: 10px;" name="from"><input class="form-control form-control-sm" id="to" type="date" style="margin-left: 10px;" name="to"></div>
+        </form>
+    </div>
+    <div style="display: flex;margin-left: 210px;margin-top: 20px;">
+        <div></div>
+    </div>
+    <div style="background: #F0F8FF;position: sticky;overflow: auto;height: 1000px;border: 8px none #F0F8FF;font-size: 40px;width: 100%;"><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;">Leave History</label>
+        <div class="table-responsive" style="height: 400px;width: 76%;font-size: 16px;border-radius: 10px;border-width: 2px;border-top-left-radius: 10px;background: var(--bs-white);box-shadow: 0px 0px 10px 3px var(--bs-gray-600);position: relative;text-align: left;font-family: ABeeZee, sans-serif;overflow: scroll;transform: perspective(0px) translate(0px);padding: 2%;padding-top: 25px;margin-left: 12%;margin-right: 12%;">
+            <table class="table">
+                <thead style="position: static;">
+                    <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
+                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
+                        <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
+                        <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 02</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 12</td>
+                        <td>
+                            <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 22</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 32</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 42</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 52</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>textTime</td>
+                        <td>Cell 62</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 72</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 82</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Rejected</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><label class="form-label" style="font-family: ABeeZee, sans-serif;background: #F0F8FF;transform: translate(0px) translateY(0px) scale(1.80);font-size: 15px;margin-left: 40%;width: 20%;text-align: center;margin-bottom: 15px;margin-right: 40%;">Late History</label>
+        <div class="table-responsive" style="height: 400px;width: 76%;font-size: 16px;border-radius: 10px;border-width: 2px;border-top-left-radius: 10px;background: var(--bs-white);box-shadow: 0px 0px 10px 3px var(--bs-gray-600);position: relative;text-align: left;font-family: ABeeZee, sans-serif;overflow: scroll;transform: perspective(0px) translate(0px);padding: 2%;padding-top: 25px;margin-left: 12%;margin-right: 12%;">
+            <table class="table">
+                <thead style="position: static;">
+                    <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
+                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
+                        <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
+                        <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 02</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 12</td>
+                        <td>
+                            <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 22</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 32</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 42</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 52</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 62</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 72</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Approved
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 82</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>
+                            <div class="btn-group" role="group"></div>Rejected
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Approved</td>
+                    </tr>
+                    <tr>
+                        <td>TextTime</td>
+                        <td>Cell 92</td>
+                        <td>Rejected</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
