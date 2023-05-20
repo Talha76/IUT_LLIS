@@ -5,7 +5,6 @@ const getIndex = (req, res) => {
 }
 
 const postIndex = (req, res) => {
-  req.user.role = 'student';
   console.log(req.user);
   res.redirect('/student/dashboard');
 };
