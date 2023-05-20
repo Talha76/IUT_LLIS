@@ -16,9 +16,9 @@
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item dropdown show"><a class="dropdown-toggle nav-link" aria-expanded="true" data-bs-toggle="dropdown" href="#" style="font-size: 25px;">Student</a>
-                        <div class="dropdown-menu show" data-bs-popper="none"><a class="dropdown-item" href="#">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
-                    </li>
+                    <div class="btn-group open"><button class="btn btn-primary" id="username" type="button" name="userName">Admin xyz</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true" type="button"></button>
+                        <div class="dropdown-menu show" data-bs-popper="none" id="logout" name="logout"><a class="dropdown-item" id="resetPassword" href="#" name="resetPassword">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
+                    </div>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                 </ul>
@@ -38,6 +38,7 @@
             <table class="table">
                 <thead style="position: static;">
                     <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
+                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Leave Id</th>
                         <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
                         <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
                         <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
@@ -45,89 +46,104 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 02</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 12</td>
                         <td>
                             <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 22</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 32</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 42</td>
                         <td>
                             <div class="btn-group" role="group"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 52</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>textTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 62</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 72</td>
                         <td>
                             <div class="btn-group" role="group"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 82</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Rejected</td>
                     </tr>
@@ -138,6 +154,7 @@
             <table class="table">
                 <thead style="position: static;">
                     <tr style="position: sticky;top: 0;font-size: 16px;width: 50%;height: 54px;padding-right: 0px;">
+                        <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Late Id</th>
                         <th style="position: sticky;width: 25%;border-style: solid;border-color: var(--bs-gray-400);background: var(--bs-gray-500);height: 55px;">Time</th>
                         <th style="width: 25%;background: var(--bs-gray-500);">Reason</th>
                         <th style="width: 25%;background: var(--bs-gray-500);">Verdict</th>
@@ -145,89 +162,104 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 02</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 12</td>
                         <td>
                             <div class="btn-group" role="group" style="font-size: 16px;"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 22</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 32</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 42</td>
                         <td>
                             <div class="btn-group" role="group"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 52</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 62</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 72</td>
                         <td>
                             <div class="btn-group" role="group"></div>Approved
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 82</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>
                             <div class="btn-group" role="group"></div>Rejected
                         </td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Approved</td>
                     </tr>
                     <tr>
-                        <td>TextTime</td>
+                        <td>Text</td>
+                        <td>Text</td>
                         <td>Cell 92</td>
                         <td>Rejected</td>
                     </tr>

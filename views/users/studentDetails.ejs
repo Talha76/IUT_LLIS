@@ -11,22 +11,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
 </head>
 
-<body style="margin: 0px;margin-bottom: 0px;padding-bottom: 0px;margin-right: 0px;padding-right: 0px;width: 100%;position: relative;background: #F0F8FF;" data-bs-target="#navcol-2" data-bs-smooth-scroll="true">
-    <!-- Start: Navbar Right Links -->
+<body style="margin: 0px;margin-bottom: 0px;padding-bottom: 0px;margin-right: 0px;padding-right: 0px;width: 100%;position: relative;background: transparent;" data-bs-target="#navcol-2" data-bs-smooth-scroll="true">
     <nav class="navbar navbar-light navbar-expand-md py-3" style="width: 100%;height: 160px;margin-top: 0px;">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/IUT_LOGO.png" width="87" height="106"><span style="font-size: 40px;"><strong>IUT </strong>LLIS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/IUT_LOGO.png" width="87" height="106"><span style="font-size: 40px;color: rgba(103,8,8,0.9);"><strong>IUT </strong>LLIS</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item dropdown show"><a class="dropdown-toggle nav-link" aria-expanded="true" data-bs-toggle="dropdown" href="#" style="font-size: 20px;">Admin xyx</a>
-                        <div class="dropdown-menu show" data-bs-popper="none"><a class="dropdown-item" href="#">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
-                    </li>
+                    <div class="btn-group open"><button class="btn btn-primary" id="username" type="button" name="userName">Admin xyz</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="true" type="button"></button>
+                        <div class="dropdown-menu show" data-bs-popper="none" id="logout" name="logout"><a class="dropdown-item" id="resetPassword" href="#" name="resetPassword">Reset Password</a><a class="dropdown-item" href="#">Logout</a></div>
+                    </div>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                 </ul>
             </div>
         </div>
-    </nav><!-- End: Navbar Right Links -->
+    </nav>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-leave">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -92,7 +91,7 @@
         </div>
     </div>
     <div class="container" style="height: 500px;">
-        <div style="width: 100%;padding: 2%;"><label class="form-label" style="background: #F0F8FF;font-size: 25px;font-family: ABeeZee, sans-serif;margin: 0px;margin-left: -5px;margin-bottom: 10px;"><span style="text-decoration: underline;">Leave Details</span></label>
+        <div style="width: 100%;padding: 2%;"><label class="form-label" style="background: transparent;font-size: 25px;font-family: ABeeZee, sans-serif;margin: 0px;margin-left: -5px;margin-bottom: 10px;"><span style="text-decoration: underline;">Leave Details</span></label>
             <form>
                 <div style="width: 100%;margin-bottom: 10px;"><label class="form-label d-xxl-flex" style="width: 100%;font-family: Poppins, sans-serif;display: inline-block;"><strong>Name of Student:</strong></label><input class="form-control form-control-sm" type="text" style="width: 50%;" name="name" placeholder="Your Full Name" readonly=""></div>
                 <div style="width: 100%;margin-bottom: 10px;"><label class="form-label d-xxl-flex" style="width: 100%;font-family: Poppins, sans-serif;display: inline-block;"><strong>Student ID:</strong></label><input class="form-control form-control-sm" type="text" style="width: 50%;" name="id" placeholder="Your Student ID" readonly=""></div>
