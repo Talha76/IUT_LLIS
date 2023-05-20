@@ -30,7 +30,10 @@ const postLateSave = async (req, res) => {
 }
 
 const getHistory = async (req, res) => {
-  res.render('users/studentHistory.ejs');
+  res.render('users/studentHistory.ejs', {
+    student: req.user,
+    success: req.flash('success'),
+  });
 }
 
 module.exports = {

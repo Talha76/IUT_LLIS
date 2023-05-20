@@ -48,7 +48,10 @@ const getLogout = async (req, res) => {
 };
 
 const getDetails = async (req, res) => {
-  res.render('users/studentDetails.ejs');
+  res.render('users/studentDetails.ejs', {
+    student: req.user,
+    success: req.flash('success'),
+  });
 };
 const getSearchStudent = (req, res) => {
 
