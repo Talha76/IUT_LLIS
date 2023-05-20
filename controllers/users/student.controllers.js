@@ -1,5 +1,16 @@
 const studentModel = require('../../models/student.model');
 
+const getIndex = (req, res) => {
+  res.render('login.ejs', { error: req.flash('error') });
+}
+
+const postIndex = (req, res) => {
+  req.user.role = 'student';
+  console.log(req.user);
+  res.redirect('/student/dashboard');
+};
+
+
 const getDashboard = (req, res) => {
   res.render('users/studentDashboard.ejs', {
     student: req.user,
@@ -37,6 +48,8 @@ const getHistory = async (req, res) => {
 }
 
 module.exports = {
+  getIndex,
+  postIndex,
   getDashboard,
   getLogout,
   postLeaveSave,
