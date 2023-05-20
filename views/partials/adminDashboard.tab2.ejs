@@ -13,6 +13,8 @@
     "
   >
     <form
+      method="get"
+      action="/admin/dashboard"
       class="ps-lg-0"
       style="
         display: block;
@@ -58,7 +60,7 @@
           type="search"
           id="studentId"
           placeholder="search id"
-          name="studentId"
+          name="studentIdLate"
         /><input
           class="form-control form-control-sm"
           id="from"
@@ -182,250 +184,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="/admin/details">Leave Id</a></td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 01</a>
-              </td>
-              <td>Cell 02</td>
-              <td>Cell 03</td>
-              <td><a href="#">Details</a></td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td id="time" name="time">Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 11</a>
-              </td>
-              <td>Cell 12</td>
-              <td>Cell 13</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div
-                  class="btn-group"
-                  role="group"
-                  style="font-size: 16px"
-                ></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 21</a>
-              </td>
-              <td>Cell 22</td>
-              <td>Cell 23</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 31</a>
-              </td>
-              <td>Cell 32</td>
-              <td>Cell 33</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 41</a>
-              </td>
-              <td>Cell 42</td>
-              <td>Cell 43</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 51</a>
-              </td>
-              <td>Cell 52</td>
-              <td>Cell 53</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 61</a>
-              </td>
-              <td>Cell 62</td>
-              <td>Cell 63</td>
-              <td><a href="#">Details</a></td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 71</a>
-              </td>
-              <td>Cell 72</td>
-              <td>Cell 73</td>
-              <td><a href="#">Details</a></td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 81</a>
-              </td>
-              <td>Cell 82</td>
-              <td>Cell 83</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Rejected</td>
-            </tr>
+            <% if(leaveHistory.length > 0) { %>
+              <% leaveHistory.forEach(leave=> { %>
+                <tr>
+                  <td> <a href='#'> <%= leave.leaveId %>  </a> </td>
+                  <td><%= leave.time %></td>
+                  <td><%= leave.id %></td>
+                  <td><%= leave.name %></td>
+                  <td><%= leave.purposeOfVisit %></td>
+                  <td><%= leave.supervisorStatus %></td>
+                </tr>
+              <% }) %>
+            <% } %>
           </tbody>
         </table>
       </div>
@@ -504,7 +274,7 @@
               "
             >
               <th style="width: 16.5%; background: var(--bs-gray-500)">
-                Details
+                Late Id
               </th>
               <th
                 style="
@@ -547,250 +317,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="/admin/details">Late Id</a></td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 01</a>
-              </td>
-              <td>Cell 02</td>
-              <td>Cell 03</td>
-              <td><a href="#">Details</a></td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 11</a>
-              </td>
-              <td>Cell 12</td>
-              <td>Cell 13</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div
-                  class="btn-group"
-                  role="group"
-                  style="font-size: 16px"
-                ></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 21</a>
-              </td>
-              <td>Cell 22</td>
-              <td>Cell 23</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 31</a>
-              </td>
-              <td>Cell 32</td>
-              <td>Cell 33</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 41</a>
-              </td>
-              <td>Cell 42</td>
-              <td>Cell 43</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 51</a>
-              </td>
-              <td>Cell 52</td>
-              <td>Cell 53</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 61</a>
-              </td>
-              <td>Cell 62</td>
-              <td>Cell 63</td>
-              <td><a href="#">Details</a></td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 71</a>
-              </td>
-              <td>Cell 72</td>
-              <td>Cell 73</td>
-              <td><a href="#">Details</a></td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Approved
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 81</a>
-              </td>
-              <td>Cell 82</td>
-              <td>Cell 83</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>
-                <div class="btn-group" role="group"></div>
-                Rejected
-              </td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Approved</td>
-            </tr>
-            <tr>
-              <td>Text</td>
-              <td style="text-decoration: underline">
-                <a href="#">Cell 91</a>
-              </td>
-              <td>Cell 92</td>
-              <td>Cell 93</td>
-              <td>
-                <a href="#"
-                  ><span style="color: var(--bs-link-hover-color)"
-                    >Details</span
-                  ></a
-                >
-              </td>
-              <td>Rejected</td>
-            </tr>
+            <tbody>
+              <% if(lateHistory.length > 0) { %>
+                <% lateHistory.forEach(late=> { %>
+                  <tr>
+                    <td> <a href='#'> <%= late.lateId %>  </a> </td>
+                    <td><%= late.time %></td>
+                    <td><%= late.id %></td>
+                    <td><%= late.name %></td>
+                    <td><%= late.reason %></td>
+                    <td><%= late.priorAuthorization %></td>
+                  </tr>
+                <% }) %>
+              <% } %>
+            </tbody>
           </tbody>
         </table>
       </div>
