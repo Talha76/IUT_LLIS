@@ -9,7 +9,7 @@ const getAdminIndex = (req, res) => {
 };
 
 const postAdminIndex = (req, res, next) => {
-  passport.authenticate('local2', {
+  passport.authenticate('localAdmin', {
     successRedirect:'/admin/dashboard',
     failureRedirect:'/admin',
     successFlash: true,

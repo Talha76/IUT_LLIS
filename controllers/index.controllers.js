@@ -8,7 +8,7 @@ const getIndex = (req, res) => {
 };
 
 const postIndex = (req, res, next) => {
-  passport.authenticate('local1', {
+  passport.authenticate('localStudent', {
     successRedirect:'/student/dashboard',
     failureRedirect:'/',
     successFlash: true,
