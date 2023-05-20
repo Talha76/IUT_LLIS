@@ -7,7 +7,7 @@ router.get ('/', ensureAdminNotAuth, adminModules.getAdminIndex);
 router.post('/', ensureAdminNotAuth, adminModules.postAdminIndex);
 router.get('/dashboard', ensureAdminAuth, adminModules.getAdminDashboard);
 router.get('/searchStudent', ensureAdminAuth,  adminModules.getSearchStudent);
-router.post('/searchStudent', ensureAdminAuth,  adminModules.postSearchStudent);
 router.get('/logout', ensureAdminAuth, adminModules.getLogout);
+router.get('/details', ensureAdminAuth, adminModules.getDetails);
 
 module.exports = router;

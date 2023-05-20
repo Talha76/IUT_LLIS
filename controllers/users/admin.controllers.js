@@ -47,10 +47,13 @@ const getLogout = async (req, res) => {
   res.redirect('/admin');
 };
 
-const getSearchStudent = (req, res) => {
-
+const getDetails = async (req, res) => {
+  res.render('users/studentDetails.ejs', {
+    student: req.user,
+    success: req.flash('success'),
+  });
 };
-const postSearchStudent = (req, res) => {
+const getSearchStudent = (req, res) => {
 
 };
 
@@ -59,6 +62,6 @@ module.exports = {
   postAdminIndex,
   getAdminDashboard,
   getSearchStudent,
-  postSearchStudent,
-  getLogout
+  getLogout,
+  getDetails
 };
