@@ -177,7 +177,7 @@
         <%  if (searchResults.length > 0) { %>
           <% searchResults.forEach(src_rslt=> { %>
             <tr>
-              <td><a href="#"> <%=  src_rslt.leaveId %> </a> </td>
+              <td method="get"><a href="/admin/details?leaveId=<%=  src_rslt.leaveId %>"> <%=  src_rslt.leaveId %> </a> </td>
               <td><%= src_rslt.time %></td>
               <td ><a href="#"> <%=  src_rslt.studentId %> </a></td>
               <td><%= src_rslt.name %></td>
