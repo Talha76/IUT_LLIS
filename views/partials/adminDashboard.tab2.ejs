@@ -106,7 +106,8 @@
         "
         >Leave History</label
       >
-      <div
+      <form action="/admin/generate-leave-report">
+        <div
         class="table-responsive"
         style="
           height: 400px;
@@ -128,7 +129,7 @@
           margin-right: 12%;
         "
       >
-        <table class="table">
+        <table class="table" id="Leavetable">
           <thead style="position: static">
             <tr
               style="
@@ -201,7 +202,7 @@
       </div>
       <button
         class="btn btn-primary"
-        type="button"
+        type="submit"
         style="
           transform: translate(0px) translateX(0px);
           margin-left: 40%;
@@ -211,6 +212,7 @@
       >
         Generate Report
       </button>
+      </form>
     </div>
     <!-- table 1 ends -->
 
@@ -239,7 +241,8 @@
         "
         >Late History</label
       >
-      <div
+      <form action="/admin/generate-late-report">
+        <div
         class="table-responsive"
         style="
           height: 400px;
@@ -336,7 +339,7 @@
       </div>
       <button
         class="btn btn-primary"
-        type="button"
+        type="submit"
         style="
           transform: translate(0px) translateX(0px);
           margin-left: 40%;
@@ -346,6 +349,7 @@
       >
         Generate Report
       </button>
+      </form>
     </div>
   </div>
 </div>
