@@ -11,5 +11,6 @@ router.post('/leave-save', ensureAuth, middleware.isStudent, middleware.authenti
 router.post('/late-save', ensureAuth, middleware.isStudent, middleware.authenticateLateData, studentModules.postLateSave);
 router.get('/logout', ensureAuth, studentModules.getLogout);
 router.get('/history', ensureAuth, middleware.isStudent, studentModules.getHistory);
+router.get('/history/details', ensureAuth, middleware.isStudent, studentModules.getHistoryDetails);
 
 module.exports = router;
