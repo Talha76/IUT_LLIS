@@ -26,7 +26,6 @@ const postAdminIndex = (req, res) => {
     
 // }
 const getAdminDashboard = async (req, res) => {
-  // console.log(req.user);
   const id = typeof req.query.studentId === 'undefined' ? '' : req.query.studentId;
   const from = typeof req.query.from === 'undefined' ? '' : req.query.from;
   const to = typeof req.query.to === 'undefined' ? '' : req.query.to;

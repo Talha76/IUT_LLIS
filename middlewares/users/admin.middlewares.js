@@ -13,7 +13,7 @@ const isAdmin = (req, res, next) => {
   }
 
   req.flash('error', 'Access Denied!');
-  res.send(403).send('Unauthorized');
+  res.status(403).send('Unauthorized');
 }
 
 module.exports = {

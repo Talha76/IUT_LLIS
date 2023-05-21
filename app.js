@@ -16,19 +16,18 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 // Session and Flash
-app.use(
-  session({
-    secret: 'secret',
-    resave: true,
-    saveUninitalized : false
-  })
-);
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passportStudent')(passport);
 require('./config/passportAdmin')(passport);
+require('./config/passport')(passport);
 
 app.use(flash());
 
