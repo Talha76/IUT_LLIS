@@ -1,6 +1,8 @@
-const { pool, client } = require('../../config/database.config');
-const passport = require('passport');
+const { pool } = require('../../config/database.config');
+const reportGenerator = require('../../server');
 
+const leave_history = [];
+const late_history = [];
 const getAdminIndex = (req, res) => {
   res.render('users/adminLogin.ejs', {
     error: req.flash('error'),
@@ -11,20 +13,7 @@ const getAdminIndex = (req, res) => {
 const postAdminIndex = (req, res) => {
   res.redirect('/admin/dashboard');
 };
-// const getLeaveHistory = async (req, res) => {
-//   const id = typeof req.query.id === 'undefined' ? '' : req.query.id;
- 
 
-//     res.render('../views/users/adminDashboard.ejs', {leaveHistory: req.flash('leave_history')});
-    
-// }
-
-// const getLateHistory = async (req, res) => {
-//   const id = typeof req.query.id === 'undefined' ? '' : req.query.id;
-  
-//     res.render('../views/users/adminDashboard.ejs', {lateHistory: req.flash('late_history')});
-    
-// }
 const getAdminDashboard = async (req, res) => {
   const id = typeof req.query.studentId === 'undefined' ? '' : req.query.studentId;
   const from = typeof req.query.from === 'undefined' ? '' : req.query.from;
@@ -51,33 +40,38 @@ const getAdminDashboard = async (req, res) => {
     req.flash('search_results');
 
   // for leave history
-  const leave_history = [];
   const query1 = `select * 
            from "leaveInfo", "students"
            where "leaveInfo"."supervisorStatus" = 'approved'
              and "students"."gender" ilike 'female'
              and "students"."id" = "leaveInfo"."studentId"
              and "students"."id"::text like '%' || trim('${id}') || '%'`;
+
+  while(leave_history.length) {
+    leave_history.pop();
+  }
   await client.query(query1)
     .then((result) => {
       result.rows.forEach(row => leave_history.push(row));
     })
     .catch((err) => console.error(err + 'errorLeave'))
-    // .finally(() => client.release());
-  
+
   if(leave_history.length)
     req.flash('leave_history', leave_history);
   else
     req.flash('leave_history');
 
   // for late history
-  const late_history = [];
   const query2 = `select * 
            from "lateInfo", "students"
            where "lateInfo"."priorAuthorization" = 'TRUE'
              and "students"."gender" ilike 'female'
              and "students"."id" = "lateInfo"."studentId"
              and "students"."id"::text like '%' || trim('${id}') || '%'`;
+
+  while(late_history.length) {
+    late_history.pop();
+  }
   await client.query(query2)
     .then((result) => {
       result.rows.forEach(row => late_history.push(row));
@@ -89,6 +83,7 @@ const getAdminDashboard = async (req, res) => {
     req.flash('late_history', late_history);
   else
     req.flash('late_history');
+
 
 
   res.render('../views/users/adminDashboard.ejs', { 
@@ -143,15 +138,25 @@ const getHistoryDetails = async (req, res) => {
     success: req.flash('success')
   });
 };
-const getSearchStudent = (req, res) => {
-  
+
+const getLeaveReport = (req, res) => {
+  columnNames = ['Leave ID', 'Time', 'Student ID', 'Student Name', 'Status'];
+  reportGenerator(leave_history, 'leave_report', columnNames);
+  res.sendFile('pdfs/leave_report.pdf', { root: './' });
+};
+
+const getLateReport = (req, res) => {
+  columnNames = ['Late ID', 'Time', 'Student ID', 'Student Name', 'Status'];
+  reportGenerator(late_history, 'late_report', columnNames);
+  res.sendFile('pdfs/late_report.pdf', { root: './' });
 };
 
 module.exports = {
   getAdminIndex, 
   postAdminIndex,
   getAdminDashboard,
-  getSearchStudent,
+  getLeaveReport,
+  getLateReport,
   getLogout,
   getDetails,
   getHistoryDetails
