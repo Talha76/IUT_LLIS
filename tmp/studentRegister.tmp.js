@@ -10,8 +10,3 @@ const { client } = require('../config/database.config');
   await client.query(`insert into "studentAuth" values(40, '${hash}')`);
   await client.end();
 })();
-
-// client.connect();
-// client.query('select password from "studentAuth" where "studentId" = 40')
-//   .then((res) => console.log(res.rows))
-//   .catch((err) => console.error(err));
