@@ -1,6 +1,11 @@
-function generateReport() {
-  const html = document.documentElement.outerHTML;
+const queryString = window.location.search;
 
-  console.log(html);
+if (queryString) {
+  const query = queryString.substring(1);
+  const queryArray = query.split('&');
+  queryArray.forEach((query) => {
+    const [ key, value ] = query.split('=');
+    const elements = document.getElementsByName(key);
+    elements.forEach((element) => element.value = value);
+  });
 }
-
