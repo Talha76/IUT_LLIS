@@ -1,4 +1,4 @@
-const adminModel = require('../models/admin.model');
+const adminModel = require('../models/hallAdmin.model');
 
 describe('Admin model tests', () => {
   afterAll(() => adminModel.destroy() );
@@ -8,6 +8,6 @@ describe('Admin model tests', () => {
     expect(user.id).toBeDefined();
     expect(user.email).toBeDefined();
     expect(user.password).toBeDefined();
-    expect(user.adminType).toBeDefined();
+    expect(user.role).toBeDefined();
   });
 });

@@ -1,6 +1,15 @@
 const { pool } = require('../../config/database.config');
 const studentModel = require('../../models/student.model');
 
+const getIndex = (req, res) => {
+  res.render('login.ejs', { error: req.flash('error') });
+}
+
+const postIndex = (req, res) => {
+  res.redirect('/student/dashboard');
+};
+
+
 const getDashboard = (req, res) => {
   res.render('users/studentDashboard.ejs', {
     student: req.user,
@@ -90,6 +99,8 @@ const getHistoryDetails = async (req, res) => {
   });
 };
 module.exports = {
+  getIndex,
+  postIndex,
   getDashboard,
   getLogout,
   postLeaveSave,
