@@ -9,5 +9,4 @@ router.post('/leave-save', ensureAuth, studentMiddlewares.authenticateLeaveData,
 router.post('/late-save', ensureAuth, studentMiddlewares.authenticateLateData, studentModules.postLateSave);
 router.get('/logout', ensureAuth, studentModules.getLogout);
 router.get('/history', ensureAuth, studentModules.getHistory);
-router.get('/historyDetails', ensureAuth, studentModules.getHistoryDetails);
 module.exports = router;

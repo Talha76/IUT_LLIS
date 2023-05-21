@@ -9,6 +9,5 @@ router.get('/dashboard', ensureAdminAuth, adminModules.getAdminDashboard);
 router.get('/searchStudent', ensureAdminAuth,  adminModules.getSearchStudent);
 router.get('/logout', ensureAdminAuth, adminModules.getLogout);
 router.get('/details', ensureAdminAuth, adminModules.getDetails);
-router.get('/historyDetails', ensureAdminAuth, adminModules.getHistoryDetails);
 
 module.exports = router;
