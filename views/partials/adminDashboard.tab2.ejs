@@ -193,7 +193,7 @@
                   <td> <a href="/admin/dashboard?studentId=<%= leave.id %>&from=&to="><%= leave.id %></a></td>
                   <td><%= leave.name %></td>
                   <td><%= leave.purposeOfVisit %></td>
-                  <td><%= leave.supervisorStatus %></td>
+                  <td><%= user.role === 'supervisor' ? leave.supervisorStatus : leave.provostStatus %></td>
                 </tr>
               <% }) %>
             <% } %>
