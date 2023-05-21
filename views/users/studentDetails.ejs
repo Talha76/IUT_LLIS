@@ -257,9 +257,30 @@
               value="<%= leaveDetails[0].arrivalDate.toISOString().split('T')[0] %>"
             />
           </div>
-          <button
+          <% if (typeof user === 'undefined' || (user.role === 'supervisor' && leaveDetails[0].supervisorStatus !== 'unapproved') || (user.role === 'provost' && leaveDetails[0].provostStatus !== 'unapproved')) { %>
+            <div style="width: 100%; margin-bottom: 10px">
+              <label
+                class="form-label d-xxl-flex"
+                style="
+                  width: 100%;
+                  font-family: Poppins, sans-serif;
+                  display: inline-block;
+                "
+                ><strong>Status:</strong></label
+              ><input
+                class="form-control form-control-sm"
+                type="text"
+                style="width: 50%"
+                required=""
+                readonly=""
+                name="arrivalDate"
+                value="<%= leaveDetails[0].provostStatus %>"
+              />
+            </div>
+          <% } else { %>
+            <a
+            href="/admin/details/leave-approve?role=<%= user.role %>"
             class="btn btn-outline-dark"
-            type="submit"
             style="
               width: auto;
               height: auto;
@@ -268,9 +289,10 @@
               background: #008000;
               color: var(--bs-btn-active-color);
             "
+            disabled
           >
-            Approve</button
-          ><button
+            Approve</a>
+          <button
             class="btn btn-outline-dark"
             type="submit"
             style="
@@ -285,6 +307,7 @@
           >
             Reject
           </button>
+          <% } %>
         </form>
       </div>
     </div>
