@@ -257,7 +257,7 @@
               value="<%= leaveDetails[0].arrivalDate.toISOString().split('T')[0] %>"
             />
           </div>
-          <% if (typeof user === 'undefined' || (user.role === 'supervisor' && leaveDetails[0].supervisorStatus !== 'unapproved') || (user.role === 'provost' && leaveDetails[0].provostStatus !== 'unapproved')) { %>
+          <% if (typeof user === 'undefined' || (user.role === 'supervisor' && leaveDetails[0].supervisorStatus !== 'unapproved') || (user.role === 'provost' && leaveDetails[0].supervisorStatus !== 'approved')) { %>
             <div style="width: 100%; margin-bottom: 10px">
               <label
                 class="form-label d-xxl-flex"
@@ -274,7 +274,7 @@
                 required=""
                 readonly=""
                 name="arrivalDate"
-                value="<%= leaveDetails[0].provostStatus %>"
+                value="<%= user.role === 'supervisor' ? leaveDetails.supervisorStatus : (leaveDetails[0].supervisorStatus === 'rejected' ? 'rejected' : 'Not yet approved by supervisor') %>"
               />
             </div>
           <% } else { %>
