@@ -1,5 +1,6 @@
 const { pool } = require('../../config/database.config');
 const reportGenerator = require('../../server');
+const hallAdmin = require('../../models/hallAdmin.model');
 
 const leave_history = [];
 const late_history = [];
@@ -152,6 +153,18 @@ const getLateReport = (req, res) => {
   res.sendFile('pdfs/late_report.pdf', { root: './' });
 };
 
+const getApprove = (req, res) => {
+  const { leaveId, role } = req.query;
+  hallAdmin.approveLeave(leaveId, role);
+  res.redirect('/admin/dashboard');
+};
+
+const getReject = (req, res) => {
+  const { leaveId, role } = req.query;
+  hallAdmin.rejectLeave(leaveId, role);
+  res.redirect('/admin/dashboard');
+};
+
 module.exports = {
   getAdminIndex, 
   postAdminIndex,
@@ -160,5 +173,7 @@ module.exports = {
   getLateReport,
   getLogout,
   getDetails,
-  getHistoryDetails
+  getHistoryDetails,
+  getApprove,
+  getReject
 };

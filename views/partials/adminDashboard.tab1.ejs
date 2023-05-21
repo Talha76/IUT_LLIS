@@ -184,15 +184,15 @@
               <td><%= src_rslt.purposeOfVisit %></td>
               <td>
                 <div class="btn-group" role="group" style="font-size: 16px">
-                  <button
+                  <a
+                    href="/admin/approve?leaveId=<%= src_rslt.leaveId %>&role=<%= user.role %>"
                     class="btn btn-primary"
-                    type="button"
                     style="font-size: 10px; background: #008000"
                   >
-                    Approve</button
-                  ><button
+                    Approve</a
+                  ><a
+                    href="/admin/reject?leaveId=<%= src_rslt.leaveId %>&role=<%= user.role %>"
                     class="btn btn-primary"
-                    type="button"
                     style="
                       transform: translate(25%);
                       font-size: 10px;
@@ -200,7 +200,7 @@
                     "
                   >
                     Reject
-                  </button>
+                  </a>
                 </div>
               </td>
             </tr>

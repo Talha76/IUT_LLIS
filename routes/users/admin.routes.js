@@ -12,5 +12,7 @@ router.get('/logout', ensureAdminAuth, adminModules.getLogout);
 router.get('/details', ensureAdminAuth, middleware.isAdmin, adminModules.getDetails);
 router.get('/history/details', ensureAdminAuth, middleware.isAdmin, adminModules.getHistoryDetails);
 router.get('/generate-late-report', ensureAdminAuth, middleware.isAdmin, adminModules.getLateReport);
+router.get('/approve', ensureAdminAuth, middleware.isAdmin, adminModules.getApprove);
+router.get('/reject', ensureAdminAuth, middleware.isAdmin, adminModules.getReject);
 
 module.exports = router;
