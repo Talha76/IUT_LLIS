@@ -74,6 +74,18 @@
           style="margin-left: 10px"
           name="to"
         />
+        <button
+          class="btn btn-primary"
+          type="submit"
+          style="
+            margin-left: 10px;
+            background: var(--bs-blue);
+            border-color: var(--bs-blue);
+            color: var(--bs-white);
+            font-family: ABeeZee, sans-serif;
+            font-size: 20px;
+          "
+        />Search</button>
       </div>
     </form>
   </div>
@@ -185,12 +197,14 @@
               <td>
                 <div class="btn-group" role="group" style="font-size: 16px">
                   <a
+                    name="leaveApprove"
                     href="/admin/approve?leaveId=<%= src_rslt.leaveId %>&role=<%= user.role %>"
                     class="btn btn-primary"
                     style="font-size: 10px; background: #008000"
                   >
                     Approve</a
                   ><a
+                    name="leaveReject"
                     href="/admin/reject?leaveId=<%= src_rslt.leaveId %>&role=<%= user.role %>"
                     class="btn btn-primary"
                     style="

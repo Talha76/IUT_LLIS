@@ -45,12 +45,12 @@ const getAdminDashboard = async (req, res) => {
     req.flash('search_results');
 
   // for leave history
-  const query1 = `select * 
-           from "leaveInfo", "students"
-           where "leaveInfo"."supervisorStatus" = 'approved'
-             and "students"."gender" ilike 'female'
-             and "students"."id" = "leaveInfo"."studentId"
-             and "students"."id"::text like '%' || trim('${id}') || '%'`;
+  const query1 = `SELECT * `
+               + `from "leaveInfo", "students" WHERE `
+               + `"leaveInfo"."${req.user.role}Status" != 'unapproved' `
+               + `AND "students"."gender" ilike 'female' `
+               + `AND "students"."id" = "leaveInfo"."studentId" `
+               + `AND "students"."id"::text like '%' || trim('${id}') || '%'`;
 
   while(leave_history.length) {
     leave_history.pop();
@@ -155,14 +155,20 @@ const getLateReport = (req, res) => {
 
 const getApprove = (req, res) => {
   const { leaveId, role } = req.query;
+  const studentId = typeof req.query.studentId === 'undefined' ? '' : req.query.studentId;
+  const from = typeof req.query.from === 'undefined' ? '' : req.query.from;
+  const to = typeof req.query.to === 'undefined' ? '' : req.query.to;
   hallAdmin.approveLeave(leaveId, role);
-  res.redirect('/admin/dashboard');
+  res.redirect(`/admin/dashboard?studentId=${studentId}&from=${from}&to=${to}`);
 };
 
 const getReject = (req, res) => {
   const { leaveId, role } = req.query;
+  const studentId = typeof req.query.studentId === 'undefined' ? '' : req.query.studentId;
+  const from = typeof req.query.from === 'undefined' ? '' : req.query.from;
+  const to = typeof req.query.to === 'undefined' ? '' : req.query.to;
   hallAdmin.rejectLeave(leaveId, role);
-  res.redirect('/admin/dashboard');
+  res.redirect(`/admin/dashboard?studentId=${studentId}&from=${from}&to=${to}`);
 };
 
 module.exports = {
