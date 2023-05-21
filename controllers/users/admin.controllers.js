@@ -8,13 +8,8 @@ const getAdminIndex = (req, res) => {
   });
 };
 
-const postAdminIndex = (req, res, next) => {
-  passport.authenticate('local2', {
-    successRedirect:'/admin/dashboard',
-    failureRedirect:'/admin',
-    successFlash: true,
-    failureFlash: true,
-  })(req, res, next);
+const postAdminIndex = (req, res) => {
+  res.redirect('/admin/dashboard');
 };
 // const getLeaveHistory = async (req, res) => {
 //   const id = typeof req.query.id === 'undefined' ? '' : req.query.id;
@@ -42,13 +37,13 @@ const getAdminDashboard = async (req, res) => {
                    and "students"."id" = "leaveInfo"."studentId"
                    and "students"."id"::text like '%' || trim('${id}') || '%'`;
   const search_results = [];
-  const clnt = await pool.connect();
-  await clnt.query(query)
+  const client = await pool.connect();
+  await client.query(query)
     .then((result) => {
       result.rows.forEach(row => search_results.push(row));
     })
     .catch((err) => console.error(err + 'error'))
-    // .finally(() => clnt.release());
+    // .finally(() => client.release());
 
   if(search_results.length)
     req.flash('search_results', search_results);
@@ -63,12 +58,12 @@ const getAdminDashboard = async (req, res) => {
              and "students"."gender" ilike 'female'
              and "students"."id" = "leaveInfo"."studentId"
              and "students"."id"::text like '%' || trim('${id}') || '%'`;
-  await clnt.query(query1)
+  await client.query(query1)
     .then((result) => {
       result.rows.forEach(row => leave_history.push(row));
     })
     .catch((err) => console.error(err + 'errorLeave'))
-    // .finally(() => clnt.release());
+    // .finally(() => client.release());
   
   if(leave_history.length)
     req.flash('leave_history', leave_history);
@@ -83,12 +78,12 @@ const getAdminDashboard = async (req, res) => {
              and "students"."gender" ilike 'female'
              and "students"."id" = "lateInfo"."studentId"
              and "students"."id"::text like '%' || trim('${id}') || '%'`;
-  await clnt.query(query2)
+  await client.query(query2)
     .then((result) => {
       result.rows.forEach(row => late_history.push(row));
     })
     .catch((err) => console.error(err + 'errorlate'))
-    .finally(() => clnt.release());
+    .finally(() => client.release());
   
   if(late_history.length)
     req.flash('late_history', late_history);

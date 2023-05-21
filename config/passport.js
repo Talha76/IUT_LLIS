@@ -1,42 +1,28 @@
-const localStrategy = require('passport-local');
-const bcrypt = require('bcryptjs');
-const studentModel = require('../models/users/student.model');
-const { Passport } = require('passport');
+const studentModel = require('../models/student.model');
+const hallAdminModel = require('../models/hallAdmin.model');
 
-module.exports = async (passport)=>{
-  await passport.use(
-    new localStrategy({usernameField: 'id'}, (id, password, done) => {
-      studentModel.getStudentById(id)
-        .then((student) => {
-          if (!student) {
-            return done(null,false,{message: 'Student ID not found!'});
-          } else {
-            // bcrypt.compare(password, student.password, (err, isMatch) => {
-            //   if (err)
-            //     throw err;
-            //   if (isMatch) {
-            //     return done(null,user);
-            //   } else {
-            //     return done(null,false,{message:'Password incorrect'});
-            //   }
-            // });
-            const isMatch = (password === student.password);
-            if (student.gender === 'Male') {
-              return done(null, false, { message: 'Access denied!' });
-            } if (isMatch) {
-              return done(null, student);
-            } return done(null, false, { message: 'Incorrect Password!' });
-          }
+module.exports = async (passport) => {
+  passport.serializeUser((user, done) => done(null, user));
+
+  passport.deserializeUser((user, done) => {
+    if (user.role === 'student') {
+      studentModel.getStudentById(user.id)
+        .then((user) => {
+          return done(null, user);
         })
-        .catch((err) => console.error(err))
-    })
-  );
-  passport.serializeUser((user, done)=>{
-    done(null, user.id);
-  })
-  passport.deserializeUser((id,done)=>{
-    studentModel.getStudentById(id)
-      .then((student) => done(null, student))
-      .catch((err) => done(err, null));
-  })
+        .catch((err) => {
+          return done(err, null);
+        });
+    } else if (user.role === 'provost' || user.role === 'supervisor') {
+      hallAdminModel.getAdminById(user.id)
+        .then((user) => {
+          return done(null, user);
+        })
+        .catch((err) => {
+          return done(err, null);
+        });
+    } else {
+      return done(err, null);
+    }
+  });
 }
