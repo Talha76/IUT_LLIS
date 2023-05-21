@@ -187,7 +187,7 @@
             <% if(leaveHistory.length > 0) { %>
               <% leaveHistory.forEach(leave=> { %>
                 <tr>
-                  <td> <a href='#'> <%= leave.leaveId %>  </a> </td>
+                  <td> <a href='/admin/historyDetails'> <%= leave.leaveId %>  </a> </td>
                   <td><%= leave.time %></td>
                   <td><%= leave.id %></td>
                   <td><%= leave.name %></td>
@@ -321,7 +321,7 @@
               <% if(lateHistory.length > 0) { %>
                 <% lateHistory.forEach(late=> { %>
                   <tr>
-                    <td> <a href='#'> <%= late.lateId %>  </a> </td>
+                    <td> <a href='/admin/historyDetails'> <%= late.lateId %>  </a> </td>
                     <td><%= late.time %></td>
                     <td><%= late.id %></td>
                     <td><%= late.name %></td>

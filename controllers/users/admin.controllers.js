@@ -1,4 +1,4 @@
-const { pool } = require('../../config/database.config');
+const { pool, client } = require('../../config/database.config');
 const passport = require('passport');
 
 const getAdminIndex = (req, res) => {
@@ -110,9 +110,41 @@ const getLogout = async (req, res) => {
 };
 
 const getDetails = async (req, res) => {
+  const leaveId = req.query.leaveId;
+  const query = `select * 
+                  from "leaveInfo", "students"
+                  where "leaveInfo"."leaveId" = '${leaveId}' 
+                    and "students"."id" = "leaveInfo"."studentId"`;
+
+  
+  const leave_details = [];
+  const clnt = await pool.connect();
+
+  await clnt.query(query)
+    .then((result) => {
+      // console.log(result.rows);
+      result.rows.forEach(row => leave_details.push(row));
+    })
+    .catch((err) => console.error(err + 'error'))
+    .finally(() => clnt.release());
+
+    // console.log(leave_details);
+    if(leave_details.length)
+    req.flash('leave_details', leave_details);
+  else
+    req.flash('leave_details');
+
   res.render('users/studentDetails.ejs', {
     student: req.user,
     success: req.flash('success'),
+    leaveDetails: req.flash('leave_details')
+  });
+};
+
+const getHistoryDetails = async (req, res) => {
+  res.render('users/studentHistoryDetailsAdmin.ejs', {
+    student: req.user,
+    success: req.flash('success')
   });
 };
 const getSearchStudent = (req, res) => {
@@ -125,5 +157,6 @@ module.exports = {
   getAdminDashboard,
   getSearchStudent,
   getLogout,
-  getDetails
+  getDetails,
+  getHistoryDetails
 };
