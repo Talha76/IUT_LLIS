@@ -188,7 +188,7 @@
             <% if(leaveHistory.length > 0) { %>
               <% leaveHistory.forEach(leave=> { %>
                 <tr>
-                  <td> <a href='/admin/historyDetails'> <%= leave.leaveId %>  </a> </td>
+                  <td> <a href="/admin/details?leaveId=<%= leave.leaveId %>"> <%= leave.leaveId %>  </a> </td>
                   <td><%= leave.time %></td>
                   <td><%= leave.id %></td>
                   <td><%= leave.name %></td>

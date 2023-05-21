@@ -15,15 +15,21 @@ const postAdminIndex = (req, res) => {
 };
 
 const getAdminDashboard = async (req, res) => {
+  const current_date = new Date();
+  
   const id = typeof req.query.studentId === 'undefined' ? '' : req.query.studentId;
-  const from = typeof req.query.from === 'undefined' ? '' : req.query.from;
-  const to = typeof req.query.to === 'undefined' ? '' : req.query.to;
-
+  const from = typeof req.query.from === 'undefined' || req.query.from === '' ? current_date.toISOString().split('T')[0] : req.query.from;
+  
+  const next_date = new Date();
+  next_date.setFullYear(next_date.getFullYear() + 100);
+  const to = typeof req.query.to === 'undefined' || req.query.to === '' ? next_date.toISOString().split('T')[0] : req.query.to;
+  
   const query = `SELECT * `
               + `FROM "leaveInfo", "students" WHERE `
               + (req.user.role === 'supervisor' ? `"leaveInfo"."supervisorStatus" = 'unapproved' ` : `"leaveInfo"."supervisorStatus" = 'approved' AND "leaveInfo"."provostStatus" = 'unapproved' `)
                 + `AND "students"."id" = "leaveInfo"."studentId" `
-                + `AND "students"."id"::TEXT LIKE '%' || TRIM('${id}') || '%'`;
+                + `AND "students"."id"::TEXT LIKE '%' || TRIM('${id}') || '%' `
+                + `AND "leaveInfo"."departureDate" BETWEEN '${from}' AND '${to}'`
   const search_results = [];
   const client = await pool.connect();
   await client.query(query)
