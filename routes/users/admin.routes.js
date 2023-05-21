@@ -10,5 +10,6 @@ router.get('/dashboard', ensureAdminAuth, middleware.isAdmin, adminModules.getAd
 router.get('/searchStudent', ensureAdminAuth, middleware.isAdmin, adminModules.getSearchStudent);
 router.get('/logout', ensureAdminAuth, adminModules.getLogout);
 router.get('/details', ensureAdminAuth, middleware.isAdmin, adminModules.getDetails);
+router.get('/history/details', ensureAdminAuth, middleware.isAdmin, adminModules.getHistoryDetails);
 
 module.exports = router;

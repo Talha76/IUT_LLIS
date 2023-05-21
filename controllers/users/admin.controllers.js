@@ -71,7 +71,7 @@ const getAdminDashboard = async (req, res) => {
     req.flash('leave_history');
 
   // for late history
-  const late_history = [];;
+  const late_history = [];
   const query2 = `select * 
            from "lateInfo", "students"
            where "lateInfo"."priorAuthorization" = 'TRUE'
@@ -92,6 +92,7 @@ const getAdminDashboard = async (req, res) => {
 
 
   res.render('../views/users/adminDashboard.ejs', { 
+    user: req.user,
     searchResults: req.flash('search_results'),
     leaveHistory: req.flash('leave_history'),
     lateHistory: req.flash('late_history')
@@ -130,7 +131,7 @@ const getDetails = async (req, res) => {
     req.flash('leave_details');
 
   res.render('users/studentDetails.ejs', {
-    student: req.user,
+    user: req.user,
     success: req.flash('success'),
     leaveDetails: req.flash('leave_details')
   });
