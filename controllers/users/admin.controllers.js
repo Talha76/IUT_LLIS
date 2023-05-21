@@ -107,11 +107,10 @@ const getLogout = async (req, res) => {
 const getDetails = async (req, res) => {
   const leaveId = req.query.leaveId;
   const query = `select * 
-                  from "leaveInfo", "students"
-                  where "leaveInfo"."leaveId" = '${leaveId}' 
-                    and "students"."id" = "leaveInfo"."studentId"`;
+                 from "leaveInfo", "students"
+                 where "leaveInfo"."leaveId" = '${leaveId}' 
+                   and "students"."id" = "leaveInfo"."studentId"`;
 
-  
   const leave_details = [];
   const clnt = await pool.connect();
 
