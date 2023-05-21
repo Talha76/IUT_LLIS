@@ -4,7 +4,7 @@ describe('User model tests', () => {
   afterAll(() => studentModel.destroy() );
 
   test('User should get proper user fields', async () => {
-    const user = await studentModel.getStudentById(40);
+    const user = await studentModel.getStudentById(39);
     expect(user.id).toBeDefined();
     expect(user.name).toBeDefined();
     expect(user.department).toBeDefined();
