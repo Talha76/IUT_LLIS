@@ -1,51 +1,5 @@
 const fs = require('fs');
 const PDFDocument = require('pdfkit');
-// const ejs = require('ejs');
-// const cheerio = require('cheerio');
-
-// const template = fs.readFileSync("./views/partials/adminDashboard.tab2.ejs", "utf-8");
-// const renderedHTML = ejs.render(template);
-
-// const $ = cheerio.load(renderedHTML); // Load the rendered HTML into Cheerio
-
-// const table = $('#Leavetable');
-
-// const tableData = [];
-
-// const columnNames = []; // Array to store column names
-
-// // Extract column names from the table header
-// table.find('th').each((index, headerCell) => {
-//   columnNames.push($(headerCell).text().trim());
-// });
-
-// table.find('tr').each((index, row) => {
-//   const rowData = {};
-
-//   $(row).find('td').each((cellIndex, cell) => {
-//     const columnName = columnNames[cellIndex]; // Use the corresponding column name from the array
-
-//     // Exclude anchor tag for leaveId in PDF
-//     if (columnName === 'leaveId') {
-//       rowData[columnName] = $(cell).text().trim(); // Get the plain text value
-//     } else {
-//       rowData[columnName] = $(cell).html().trim(); // Get the HTML content as is
-//     }
-//   });
-
-//   tableData.push(rowData);
-// });
-
-// table.find('tr').each((index, row) => {
-//   const rowData = {};
-
-//   $(row).find('td').each((cellIndex, cell) => {
-//     const columnName = columnNames[cellIndex]; // Use the corresponding column name from the array
-//     rowData[columnName] = $(cell).text().trim();
-//   });
-
-//   tableData.push(rowData);
-// });
 
 module.exports = (tableData, saveFileName, columnNames) => {
   function addTableToPDF(doc, tableData) {
@@ -124,10 +78,6 @@ module.exports = (tableData, saveFileName, columnNames) => {
       x += columnWidth;
       doc.rect(x, y, columnWidth, cellHeight * 2).stroke();
       doc.fontSize(fontSize).text(name, x + cellPadding, y + cellPadding);
-  
-      // x += columnWidth;
-      // doc.rect(x, y, columnWidth, cellHeight * 2).stroke();
-      // doc.fontSize(fontSize).text(purposeOfVisit, x + cellPadding, y + cellPadding);
       
       x += columnWidth;
       doc.rect(x, y, columnWidth, cellHeight * 2).stroke();
