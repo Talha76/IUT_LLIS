@@ -114,6 +114,14 @@ const getHistoryDetails = async (req, res) => {
     success: req.flash('success')
   });
 };
+
+const getForgotPassword = (req, res) => {
+  res.render('forgotPassword.ejs', {
+    user: req.user,
+    success: req.flash('success')
+  })
+};
+
 module.exports = {
   getIndex,
   postIndex,

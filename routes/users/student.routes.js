@@ -9,8 +9,9 @@ router.post('/', ensureNotAuth, middleware.indexPassportAuth, studentModules.pos
 router.get('/dashboard', ensureAuth, middleware.isStudent, studentModules.getDashboard);
 router.post('/leave-save', ensureAuth, middleware.isStudent, middleware.authenticateLeaveData, studentModules.postLeaveSave); 
 router.post('/late-save', ensureAuth, middleware.isStudent, middleware.authenticateLateData, studentModules.postLateSave);
-router.get('/logout', ensureAuth, studentModules.getLogout);
 router.get('/history', ensureAuth, middleware.isStudent, studentModules.getHistory);
 router.get('/history/details', ensureAuth, middleware.isStudent, studentModules.getHistoryDetails);
+router.get('/forgot-password', ensureAuth, middleware.isStudent, )
+router.get('/logout', ensureAuth, studentModules.getLogout);
 
 module.exports = router;
