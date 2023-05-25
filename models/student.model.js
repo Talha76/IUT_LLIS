@@ -26,7 +26,7 @@ const getStudentById = async (id) => {
 const getStudentByEmail = async (email) => {
   const query = `SELECT "students".*, "studentAuth"."password", "studentAuth"."resetPasswordToken", 'student' as role `
               + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
-              + `WHERE "students"."email" = ${email} AND `
+              + `WHERE "students"."email" = '${email}' AND `
                     + `"students"."gender" ILIKE 'female'`;
   return new Promise((resolve, reject) => {
     pool.connect()
