@@ -23,6 +23,29 @@ const getStudentById = async (id) => {
   });
 }
 
+const getStudentByEmail = async (email) => {
+  const query = `SELECT "students".*, "studentAuth"."password", "studentAuth"."resetPasswordToken", 'student' as role `
+              + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
+              + `WHERE "students"."email" = '${email}' AND `
+                    + `"students"."gender" ILIKE 'female'`;
+  return new Promise((resolve, reject) => {
+    pool.connect()
+      .then((client) => {
+        client.query(query)
+          .then((res) => {
+            if (res.rowCount < 1) {
+              resolve(null);
+            } else {
+              resolve(res.rows[0]);
+            }
+          })
+          .catch((err) => reject(err))
+          .finally(() => client.release());
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 const saveLeaveInfo = async (id, info) => {
   const query = `INSERT INTO "leaveInfo" ("studentId", "placeOfVisit", "purposeOfVisit", "departureDate", "arrivalDate", "contact", "guardianContact") `
               + `VALUES (${id}, '${info.placeOfVisit}', '${info.purposeOfVisit}', '${info.departureDate}', '${info.arrivalDate}', `
@@ -67,6 +90,7 @@ const destroy = async() => pool.end();
 
 module.exports = {
   getStudentById,
+  getStudentByEmail,
   saveLeaveInfo,
   saveLateInfo,
   destroy
