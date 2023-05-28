@@ -1,5 +1,8 @@
+const passport = require('passport');
+const jwtStrategy = require('passport-jwt').Strategy;
 const { pool } = require('../../config/database.config');
 const studentModel = require('../../models/student.model');
+require('dotenv').config();
 
 const getIndex = (req, res) => {
   res.render('login.ejs', { error: req.flash('error') });
@@ -115,11 +118,36 @@ const getHistoryDetails = async (req, res) => {
   });
 };
 
-const getForgotPassword = (req, res) => {
-  res.render('forgotPassword.ejs', {
-    user: req.user,
-    success: req.flash('success')
-  })
+const getForgotPassword = async (req, res, next) => {
+  passport.use('jwt', new jwtStrategy(
+    {
+      secretOrKey: process.env.JWT_SECRET,
+      jwtFromRequest: (req) => req.params.token
+    }, (payload, done) => {
+      if (payload) {
+        studentModel.getStudentById(payload.id)
+          .then((user) => {
+            if (!user) {
+              return done(null, false, { message: 'User not found!' });
+            } else if (user.gender.toLowerCase() === 'male') {
+              return done(null, false, { message: 'Access Denied!' });
+            } else {
+              return done(null, user);
+            }
+          })
+          .catch((err) => done(err));
+      } else {
+        done(new Error('Invalid token'));
+      }
+    }
+  ));
+
+  await passport.authenticate('jwt', { failureRedirect: '/student' }, (err, user, info) => {
+    if (err)
+      throw err;
+    console.log(info);
+    res.render('forgotPassword');
+  })(req, res, next);
 };
 
 module.exports = {
@@ -130,5 +158,6 @@ module.exports = {
   postLeaveSave,
   postLateSave,
   getHistory,
-  getHistoryDetails
+  getHistoryDetails,
+  getForgotPassword
 };
