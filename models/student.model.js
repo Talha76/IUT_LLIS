@@ -1,33 +1,9 @@
 const { pool } = require('../config/database.config');
 
 const getStudentById = async (id) => {
-  const query = `SELECT "students".*, "studentAuth".password, 'student' as role `
+  const query = `SELECT "students".*, "studentAuth".password, "studentAuth"."resetPasswordToken", 'student' as role `
               + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
-              + `WHERE "students"."id" = ${id} AND `
-                    + `"students"."gender" ILIKE 'female'`;
-  return new Promise((resolve, reject) => {
-    pool.connect()
-      .then((client) => {
-        client.query(query)
-          .then((res) => {
-            if (res.rowCount < 1) {
-              resolve(null);
-            } else {
-              resolve(res.rows[0]);
-            }
-          })
-          .catch((err) => reject(err))
-          .finally(() => client.release());
-      })
-      .catch((err) => reject(err));
-  });
-}
-
-const getStudentByEmail = async (email) => {
-  const query = `SELECT "students".*, "studentAuth"."password", "studentAuth"."resetPasswordToken", 'student' as role `
-              + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
-              + `WHERE "students"."email" = '${email}' AND `
-                    + `"students"."gender" ILIKE 'female'`;
+              + `WHERE "students"."id" = ${id}`;
   return new Promise((resolve, reject) => {
     pool.connect()
       .then((client) => {
@@ -90,7 +66,6 @@ const destroy = async() => pool.end();
 
 module.exports = {
   getStudentById,
-  getStudentByEmail,
   saveLeaveInfo,
   saveLateInfo,
   destroy

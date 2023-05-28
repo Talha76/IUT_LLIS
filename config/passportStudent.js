@@ -9,7 +9,7 @@ module.exports = async (passport) => {
         if (!user) {
           return done(null, false, { message: 'Student ID not found!' });
         } else {
-          if (user.gender === 'Male') {
+          if (user.gender.toLowerCase() === 'male') {
             return done(null, false, { message: 'Access denied!' });
           }
           bcrypt.compare(password, user.password)
