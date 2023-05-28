@@ -19,9 +19,6 @@ describe('User model tests', () => {
     expect(user.contactNo).toBeDefined();
     expect(user.password).toBeDefined();
     expect(user.role).toBe('student');
-
-    const emailUser = await studentModel.getStudentByEmail(`female1@iut-dhaka.edu`);
-    expect(emailUser.resetPasswordToken).toBeDefined();
+    expect(user.resetPasswordToken).toBeDefined();
   });
-
 });

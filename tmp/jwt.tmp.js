@@ -12,7 +12,8 @@ jwt.sign(user, 'top_level_secret', { expiresIn: '2m' }, (err, token) => {
     .then((client) => {
       const query = `UPDATE "studentAuth" SET "resetPasswordToken" = '${token}' WHERE "studentId" = ${user.id}`;
       client.query(query)
-        .catch((err) => console.error(err)); 
+        .catch((err) => console.error(err))
+        .finally(() => client.release());
     })
     .catch((err) => console.error(err));
 });
