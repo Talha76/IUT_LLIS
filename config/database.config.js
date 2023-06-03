@@ -7,4 +7,23 @@ const pool = new Pool({
 
 const client = new Client(process.env.CLIENT_URI);
 
-module.exports = { pool, client };
+const poolExecute = async (queryString) => {
+  const poolClient = await pool.connect();
+  const result = await poolClient.query(queryString);
+  poolClient.release();
+  return result.rows;
+}
+
+const clientExecute = async (queryString) => {
+  await client.connect();
+  const result = client.query(queryString);
+  await client.end();
+  return result.rows;
+}
+
+module.exports = { 
+  pool,
+  client,
+  poolExecute,
+  clientExecute
+}
