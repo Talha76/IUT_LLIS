@@ -1,0 +1,20 @@
+const jwt = require('jsonwebtoken');
+const { pool } = require('../config/database.config');
+
+const user = { id: 39 };
+
+jwt.sign(user, 'top_level_secret', { expiresIn: '5m' }, (err, token) => {
+  if (err)
+    throw err;
+
+  console.log(token);
+  pool.connect()
+    .then((client) => {
+      const query = `UPDATE "studentAuth" SET "resetPasswordToken" = '${token}' WHERE "id" = ${user.id}`;
+      client.query(query)
+        .catch((err) => console.error(err))
+        .finally(() => client.release());
+    })
+    .catch((err) => console.error(err))
+    .finally(() => pool.end());
+});

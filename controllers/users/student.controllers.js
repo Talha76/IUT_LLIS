@@ -118,7 +118,16 @@ const getHistoryDetails = async (req, res) => {
   });
 };
 
-const getForgotPassword = async (req, res, next) => {
+const getForgotPassword = async (req, res) => {
+  res.render('forgot-password');
+};
+
+const postForgotPassword = async (req, res) => {
+  const { id } = req.body;
+  
+}
+
+const getToken = async (req, res) => {
   passport.use('jwt', new jwtStrategy(
     {
       secretOrKey: process.env.JWT_SECRET,
@@ -129,7 +138,8 @@ const getForgotPassword = async (req, res, next) => {
           .then((user) => {
             if (!user) {
               return done(null, false, { message: 'User not found!' });
-            } else if (user.gender.toLowerCase() === 'male') {
+            } else if (user.gender.toLowerCase() === 'male' ||
+                       user.resetPasswordToken !== req.params.token) {
               return done(null, false, { message: 'Access Denied!' });
             } else {
               return done(null, user);
@@ -142,11 +152,16 @@ const getForgotPassword = async (req, res, next) => {
     }
   ));
 
-  await passport.authenticate('jwt', { failureRedirect: '/student' }, (err, user, info) => {
+  await passport.authenticate('jwt', (err, user, info) => {
     if (err)
       throw err;
-    console.log(info);
-    res.render('forgotPassword');
+  
+    if (!user) {
+      req.flash('error', info.message);
+      res.redirect('/student');
+    } else {
+      res.render('forgotPassword');
+    }
   })(req, res, next);
 };
 
@@ -159,5 +174,6 @@ module.exports = {
   postLateSave,
   getHistory,
   getHistoryDetails,
-  getForgotPassword
+  getForgotPassword,
+  postForgotPassword
 };
