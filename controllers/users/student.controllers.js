@@ -100,8 +100,6 @@ const getHistoryDetails = async (req, res) => {
     .catch((err) => console.error(err))
     .finally(client.release());
 
-  console.log(leave_details);
-
   if (leave_details.length) {
     req.flash('leave_details', leave_details);
   } else {

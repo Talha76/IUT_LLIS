@@ -15,7 +15,6 @@ if (queryString) {
   });
 }
 
-console.log(params);
 var appendQuery = '';
 for (const [ key, value ] of Object.entries(params)) {
   appendQuery += '&' + key + '=' + value;
