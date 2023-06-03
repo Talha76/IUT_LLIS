@@ -274,7 +274,7 @@
                 required=""
                 readonly=""
                 name="arrivalDate"
-                value="<%= user.role === 'supervisor' ? leaveDetails[0].supervisorStatus : (leaveDetails[0].supervisorStatus === 'rejected' ? 'rejected' : 'Not yet approved by supervisor') %>"
+                value="<%= typeof user === 'undefined' ? leaveDetails[0].provostStatus : (user.role === 'supervisor' ? leaveDetails[0].supervisorStatus : (leaveDetails[0].supervisorStatus === 'rejected' ? 'rejected' : 'Not yet approved by supervisor')) %>"
               />
             </div>
           <% } else { %>

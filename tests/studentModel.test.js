@@ -1,7 +1,7 @@
 const studentModel = require('../models/student.model');
 
 describe('User model tests', () => {
-  afterAll(() => studentModel.destroy() );
+  afterAll(() => studentModel.destroy());
 
   test('User should get proper user fields', async () => {
     const user = await studentModel.getStudentById(39);
