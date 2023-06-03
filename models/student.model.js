@@ -2,8 +2,9 @@ const { pool } = require('../config/database.config');
 
 const getStudentById = async (id) => {
   const query = `SELECT "students".*, "studentAuth".password, "studentAuth"."resetPasswordToken", 'student' as role `
-              + `FROM "students" LEFT OUTER JOIN "studentAuth" ON "students"."id" = "studentAuth"."studentId" `
-              + `WHERE "students"."id" = ${id}`;
+              + `FROM "students", "studentAuth" `
+              + `WHERE "students"."id" = "studentAuth"."id" AND `
+                    + `"students"."id" = ${id}`;
   return new Promise((resolve, reject) => {
     pool.connect()
       .then((client) => {
