@@ -6,6 +6,7 @@ const pool = new Pool({
 });
 
 const client = new Client(process.env.CLIENT_URI);
+client.connect();
 
 const poolExecute = async (queryString) => {
   const poolClient = await pool.connect();

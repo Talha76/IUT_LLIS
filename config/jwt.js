@@ -1,20 +1,18 @@
 const jwt = require('jsonwebtoken');
-const { pool } = require('../config/database.config');
+const { poolExecute } = require('../config/database.config');
+require('dotenv').config();
 
-const user = { id: 39 };
+/**
+ * Generates token for student
+ * @param {User type} user object must contain id, role : student, admin
+ */
+module.exports = async (user) => {
+  const token = jwt.sign(user, process.env.STUDENT_JWT_SECRET, { expiresIn: '5m' });
 
-jwt.sign(user, 'top_level_secret', { expiresIn: '5m' }, (err, token) => {
-  if (err)
-    throw err;
+  const table = (user.role === 'student' ? 'student' : 'admin') + 'Auth';
+  const query = `UPDATE "${table}" SET "resetPasswordToken" = '${token}' `
+              + `WHERE "id" = ${user.id}`;
+  await poolExecute(query);
 
-  console.log(token);
-  pool.connect()
-    .then((client) => {
-      const query = `UPDATE "studentAuth" SET "resetPasswordToken" = '${token}' WHERE "id" = ${user.id}`;
-      client.query(query)
-        .catch((err) => console.error(err))
-        .finally(() => client.release());
-    })
-    .catch((err) => console.error(err))
-    .finally(() => pool.end());
-});
+  return token;
+};

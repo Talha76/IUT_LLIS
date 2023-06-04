@@ -1,17 +1,14 @@
-const passport = require('passport');
-const jwtStrategy = require('passport-jwt').Strategy;
 const { pool } = require('../../config/database.config');
 const studentModel = require('../../models/student.model');
-require('dotenv').config();
 
 const getIndex = (req, res) => {
-  res.render('login.ejs', { error: req.flash('error') });
-}
-
-const postIndex = (req, res) => {
-  res.redirect('/student/dashboard');
+  res.render('login.ejs', {
+    error: req.flash('error'),
+    success: req.flash('success')
+  });
 };
 
+const postIndex = (req, res) => res.redirect('/student/dashboard');
 
 const getDashboard = (req, res) => {
   res.render('users/studentDashboard.ejs', {
@@ -116,51 +113,32 @@ const getHistoryDetails = async (req, res) => {
   });
 };
 
-const getForgotPassword = async (req, res) => {
-  res.render('forgot-password');
-};
+const getForgotPassword = async (req, res) => res.render('forgot-password', { message: req.flash('message') });
 
 const postForgotPassword = async (req, res) => {
   const { id } = req.body;
-  
+  const user = { id: id, role: 'student' };
+  const token = await require('../../config/jwt')(user);
+  const message = {
+    from: 'mushfiqurtalha@iut-dhaka.edu',
+    to: 'mushfiqurtalha@iut-dhaka.edu',
+    subject: 'Reset your password for IUT LLIS',
+    text: `Hi,\n Please click the below link for resetting your password. This link will expire after 5 minutes.\n`
+        + `http://localhost:3000/student/token?token=${token}`,
+    html: `<p>Hi</p><br><p>Please click the <a href="http://localhost:3000/student/token?token=${token}">link</a> to reset your password. This link will expire after 5 minutes.</p>`
+  };
+  await require('../../config/mail')(message);
+
+  req.flash('message', 'A Mail has been sent to your email address');
+  res.redirect('/student/forgot-password');
 }
 
-const getToken = async (req, res) => {
-  passport.use('jwt', new jwtStrategy(
-    {
-      secretOrKey: process.env.JWT_SECRET,
-      jwtFromRequest: (req) => req.params.token
-    }, (payload, done) => {
-      if (payload) {
-        studentModel.getStudentById(payload.id)
-          .then((user) => {
-            if (!user) {
-              return done(null, false, { message: 'User not found!' });
-            } else if (user.gender.toLowerCase() === 'male' ||
-                       user.resetPasswordToken !== req.params.token) {
-              return done(null, false, { message: 'Access Denied!' });
-            } else {
-              return done(null, user);
-            }
-          })
-          .catch((err) => done(err));
-      } else {
-        done(new Error('Invalid token'));
-      }
-    }
-  ));
+const getToken = async (req, res) => res.render('new-password');
 
-  await passport.authenticate('jwt', (err, user, info) => {
-    if (err)
-      throw err;
-  
-    if (!user) {
-      req.flash('error', info.message);
-      res.redirect('/student');
-    } else {
-      res.render('forgotPassword');
-    }
-  })(req, res, next);
+const postToken = (req, res) => {
+  // console.log(req.body);
+  // req.flash('success', 'Password has been reset successfully');
+  // res.redirect('/student');
 };
 
 module.exports = {
@@ -173,5 +151,7 @@ module.exports = {
   getHistory,
   getHistoryDetails,
   getForgotPassword,
-  postForgotPassword
+  postForgotPassword,
+  getToken,
+  postToken
 };
