@@ -49,17 +49,8 @@
           <input type="password" class="form-control" name="password" id="password" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <div class="icheck-primary">
-              <input type="checkbox" id="showPassword" onchange="showHidePassword(this)">
-              <label for="showPassword">
-                Show Password
-              </label>
+              <!-- <span class="fas fa-lock"></span> -->
+              <i class="fa fa-eye" id="eyeIcon" onclick="changePasswordVisibility()"></i>
             </div>
           </div>
         </div>
@@ -92,13 +83,17 @@
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <script>
-  function showHidePassword(box) {
+  function changePasswordVisibility() {
     const passwordField = document.getElementById("password");
-    console.log(box.checked);
-    if (box.checked) {
+    const eyeIcon = document.getElementById("eyeIcon");
+    if (passwordField.type === "password") {
       passwordField.type = "text";
+      eyeIcon.classList.remove("fa-eye");
+      eyeIcon.classList.add("fa-eye-slash");
     } else {
       passwordField.type = "password";
+      eyeIcon.classList.remove("fa-eye-slash");
+      eyeIcon.classList.add("fa-eye");
     }
   }
 </script>
