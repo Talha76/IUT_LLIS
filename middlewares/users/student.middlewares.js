@@ -1,4 +1,7 @@
 const passport = require("passport");
+const jwtStrategy = require('passport-jwt').Strategy;
+const studentModel = require('../../models/student.model');
+require('dotenv').config();
 
 const authenticateLeaveData = (req, res, next) => {
   const { studentContact, placeOfVisit, purposeOfVisit, contactPersonContact, departureDate, arrivalDate } = req.body;
@@ -28,9 +31,42 @@ const isStudent = (req, res, next) => {
   res.status(403).send('Unauthorized');
 }
 
+const validateToken = async (req, res, next) => {
+  passport.use('jwt-student', new jwtStrategy(
+    {
+      secretOrKey: process.env.JWT_SECRET,
+      jwtFromRequest: (req) => req.query.token
+    }, (payload, done) => {
+      if (!payload) {
+        return done(new Error('Invalid token'));
+      }
+
+      studentModel.getStudentById(payload.id)
+        .then((user) => {
+          if (!user) {
+            return done(null, false, { message: 'User not found!' });
+          } else if (user.gender.toLowerCase() === 'male' ||
+                      user.resetPasswordToken !== req.query.token) {
+            return done(null, false, { message: 'Access Denied!' });
+          } else {
+            return done(null, user);
+          }
+        })
+        .catch((err) => done(err));
+    }
+  ));
+
+  await passport.authenticate('jwt-student', {
+    session: false,
+    failureFlash: true,
+    failureRedirect: '/student'
+  })(req, res, next);
+}
+
 module.exports = {
   authenticateLeaveData,
   authenticateLateData,
   indexPassportAuth,
-  isStudent
+  isStudent,
+  validateToken
 }

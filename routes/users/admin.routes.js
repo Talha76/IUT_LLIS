@@ -1,18 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const adminModules = require('../../controllers/users/admin.controllers');
+const controller = require('../../controllers/users/admin.controllers');
 const middleware = require('../../middlewares/users/admin.middlewares');
 const { ensureAdminAuth, ensureAdminNotAuth } = require('../../middlewares/auth.middlewares');
+const { getToken, postToken } = require('../../controllers/auth.controllers');
 
-router.get ('/', ensureAdminNotAuth, adminModules.getAdminIndex);
-router.post('/', ensureAdminNotAuth, middleware.indexPassportAuth, adminModules.postAdminIndex);
-router.get('/dashboard', ensureAdminAuth, middleware.isAdmin, adminModules.getAdminDashboard);
-router.get('/generate-leave-report', ensureAdminAuth, middleware.isAdmin, adminModules.getLeaveReport);
-router.get('/logout', ensureAdminAuth, adminModules.getLogout);
-router.get('/details', ensureAdminAuth, middleware.isAdmin, adminModules.getDetails);
-router.get('/history/details', ensureAdminAuth, middleware.isAdmin, adminModules.getHistoryDetails);
-router.get('/generate-late-report', ensureAdminAuth, middleware.isAdmin, adminModules.getLateReport);
-router.get('/approve', ensureAdminAuth, middleware.isAdmin, adminModules.getApprove);
-router.get('/reject', ensureAdminAuth, middleware.isAdmin, adminModules.getReject);
+router.get ('/', ensureAdminNotAuth, controller.getAdminIndex);
+router.post('/', ensureAdminNotAuth, middleware.indexPassportAuth, controller.postAdminIndex);
+
+router.get('/forgot-password', ensureAdminNotAuth, controller.getForgotPassword);
+router.post('/forgot-password', ensureAdminNotAuth, controller.postForgotPassword);
+
+router.get('/token', ensureAdminNotAuth, middleware.validateToken, getToken);
+router.post('/token', ensureAdminNotAuth, postToken);
+
+router.get('/logout', ensureAdminAuth, controller.getLogout);
+
+router.get('/dashboard', ensureAdminAuth, middleware.isAdmin, controller.getAdminDashboard);
+
+router.get('/generate-leave-report', ensureAdminAuth, middleware.isAdmin, controller.getLeaveReport);
+
+router.get('/details', ensureAdminAuth, middleware.isAdmin, controller.getDetails);
+
+router.get('/history/details', ensureAdminAuth, middleware.isAdmin, controller.getHistoryDetails);
+
+router.get('/generate-late-report', ensureAdminAuth, middleware.isAdmin, controller.getLateReport);
+
+router.get('/approve', ensureAdminAuth, middleware.isAdmin, controller.getApprove);
+
+router.get('/reject', ensureAdminAuth, middleware.isAdmin, controller.getReject);
 
 module.exports = router;

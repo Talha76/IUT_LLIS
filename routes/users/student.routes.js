@@ -8,7 +8,10 @@ const { getToken, postToken } = require('../../controllers/auth.controllers')
 router.get('/', auth.ensureNotAuth, controller.getIndex);
 router.post('/', auth.ensureNotAuth, middleware.indexPassportAuth, controller.postIndex);
 
-router.get('/token', auth.ensureNotAuth, auth.validateToken, getToken);
+router.get('/forgot-password', auth.ensureNotAuth, controller.getForgotPassword);
+router.post('/forgot-password', controller.postForgotPassword);
+
+router.get('/token', auth.ensureNotAuth, middleware.validateToken, getToken);
 router.post('/token', auth.ensureNotAuth, postToken);
 
 router.get('/logout', auth.ensureAuth, controller.getLogout);
@@ -21,9 +24,6 @@ router.post('/late-save', auth.ensureAuth, middleware.isStudent, middleware.auth
 router.get('/history', auth.ensureAuth, middleware.isStudent, controller.getHistory);
 
 router.get('/history/details', auth.ensureAuth, middleware.isStudent, controller.getHistoryDetails);
-
-router.get('/forgot-password', auth.ensureNotAuth, controller.getForgotPassword);
-router.post('/forgot-password', controller.postForgotPassword);
 
 
 module.exports = router;

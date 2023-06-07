@@ -114,7 +114,7 @@ const getHistoryDetails = async (req, res) => {
 };
 
 const getForgotPassword = async (req, res) => {
-  res.render('forgot-password', {
+  res.render('users/forgot-password-student', {
     error: req.flash('error'),
     message: req.flash('message')
   });

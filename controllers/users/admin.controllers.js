@@ -9,11 +9,9 @@ const getAdminIndex = (req, res) => {
     error: req.flash('error'),
     success: req.flash('success')
   });
-};
+}
 
-const postAdminIndex = (req, res) => {
-  res.redirect('/admin/dashboard');
-};
+const postAdminIndex = (req, res) => res.redirect('/admin/dashboard');
 
 const getAdminDashboard = async (req, res) => {
   const current_date = new Date();
@@ -97,13 +95,13 @@ const getAdminDashboard = async (req, res) => {
     leaveHistory: req.flash('leave_history'),
     lateHistory: req.flash('late_history')
   });
-};
+}
 
 const getLogout = async (req, res) => {
   req.logout((err) => console.error(err));
   req.flash('success', 'You are successfully logged out');
   res.redirect('/admin');
-};
+}
 
 const getDetails = async (req, res) => {
   const leaveId = req.query.leaveId;
@@ -132,26 +130,26 @@ const getDetails = async (req, res) => {
     success: req.flash('success'),
     leaveDetails: req.flash('leave_details')
   });
-};
+}
 
 const getHistoryDetails = async (req, res) => {
   res.render('users/studentHistoryDetailsAdmin.ejs', {
     student: req.user,
     success: req.flash('success')
   });
-};
+}
 
 const getLeaveReport = (req, res) => {
   columnNames = ['Leave ID', 'Time', 'Student ID', 'Student Name', 'Status'];
   reportGenerator(leave_history, 'leave_report', columnNames);
   res.sendFile('pdfs/leave_report.pdf', { root: './' });
-};
+}
 
 const getLateReport = (req, res) => {
   columnNames = ['Late ID', 'Time', 'Student ID', 'Student Name', 'Status'];
   reportGenerator(late_history, 'late_report', columnNames);
   res.sendFile('pdfs/late_report.pdf', { root: './' });
-};
+}
 
 const getApprove = (req, res) => {
   const { leaveId, role } = req.query;
@@ -160,7 +158,7 @@ const getApprove = (req, res) => {
   const to = typeof req.query.to === 'undefined' ? '' : req.query.to;
   hallAdmin.approveLeave(leaveId, role);
   res.redirect(`/admin/dashboard?studentId=${studentId}&from=${from}&to=${to}`);
-};
+}
 
 const getReject = (req, res) => {
   const { leaveId, role } = req.query;
@@ -169,7 +167,40 @@ const getReject = (req, res) => {
   const to = typeof req.query.to === 'undefined' ? '' : req.query.to;
   hallAdmin.rejectLeave(leaveId, role);
   res.redirect(`/admin/dashboard?studentId=${studentId}&from=${from}&to=${to}`);
-};
+}
+
+const getForgotPassword = (req, res) => {
+  res.render('users/forgot-password-admin', {
+    error: req.flash('error'),
+    message: req.flash('message')
+  })
+}
+
+const postForgotPassword = async (req, res) => {
+  const id = req.body.id;
+  
+  const userResult = await hallAdmin.getAdminById(id);
+  if (!userResult) {
+    req.flash('error', 'No user found');
+    return res.redirect('/admin/forgot-password');
+  }
+
+  const user = { id: userResult.id, role: userResult.role };
+
+  const token = await require('../../config/jwt')(user);
+  const message = {
+    from: 'mushfiqurtalha@iut-dhaka.edu',
+    to: 'mushfiqurtalha@iut-dhaka.edu',
+    subject: 'Reset your password for IUT LLIS',
+    text: `Hi,\n Please click the below link for resetting your password. This link will expire after 5 minutes.\n`
+        + `http://localhost:3000/admin/token?token=${token}`,
+    html: `<p>Hi</p><br><p>Please click the <a href="http://localhost:3000/admin/token?token=${token}">link</a> to reset your password. This link will expire after 5 minutes.</p>`
+  };
+  await require('../../config/mail')(message);
+
+  req.flash('message', 'A Mail has been sent to your email address');
+  res.redirect('/admin/forgot-password');
+}
 
 module.exports = {
   getAdminIndex, 
@@ -181,5 +212,7 @@ module.exports = {
   getDetails,
   getHistoryDetails,
   getApprove,
-  getReject
+  getReject,
+  getForgotPassword,
+  postForgotPassword
 };

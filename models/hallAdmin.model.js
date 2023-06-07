@@ -15,7 +15,7 @@ const rejectLeave = async (leaveId, role) => {
 }
 
 const getAdminById = async (id) => {
-  const query = `SELECT "id", "name", "email", "password", "adminType" as "role" FROM "adminAuth"`
+  const query = `SELECT "id", "name", "email", "password", "resetPasswordToken", "adminType" as "role" FROM "adminAuth"`
               + `WHERE "id" = ${id}`;
   
   const result = await poolExecute(query);
