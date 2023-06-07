@@ -8,15 +8,15 @@ const getToken = async (req, res) => {
 
 const postToken = (req, res) => {
   const user = req.session.user;
-  const { newPassword, confirmPassword } = req.body;
+  const { password, confirmPassword } = req.body;
 
-  if (newPassword !== confirmPassword) {
+  if (password !== confirmPassword) {
     req.flash('error', 'Passwords do not match');
     return res.redirect(`/student/token?token=${user.resetPasswordToken}`);
   }
 
   const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(newPassword, salt);
+  const hash = bcrypt.hashSync(password, salt);
 
   const query = `UPDATE "studentAuth" SET "password" = '${hash}' WHERE "id" = ${user.id}`;
   poolExecute(query);
