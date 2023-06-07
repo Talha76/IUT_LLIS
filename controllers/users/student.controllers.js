@@ -113,11 +113,25 @@ const getHistoryDetails = async (req, res) => {
   });
 };
 
-const getForgotPassword = async (req, res) => res.render('forgot-password', { message: req.flash('message') });
+const getForgotPassword = async (req, res) => {
+  res.render('forgot-password', {
+    error: req.flash('error'),
+    message: req.flash('message')
+  });
+}
 
 const postForgotPassword = async (req, res) => {
   const { id } = req.body;
-  const user = { id: id, role: 'student' };
+
+  const userResult = await studentModel.getStudentById(id);
+
+  if (!userResult) {
+    req.flash('error', 'No user found');
+    return res.redirect('/student/forgot-password');
+  }
+
+  const user = { id: userResult.id, role: 'student' };
+
   const token = await require('../../config/jwt')(user);
   const message = {
     from: 'mushfiqurtalha@iut-dhaka.edu',
@@ -133,14 +147,6 @@ const postForgotPassword = async (req, res) => {
   res.redirect('/student/forgot-password');
 }
 
-const getToken = async (req, res) => res.render('new-password');
-
-const postToken = (req, res) => {
-  // console.log(req.body);
-  // req.flash('success', 'Password has been reset successfully');
-  // res.redirect('/student');
-};
-
 module.exports = {
   getIndex,
   postIndex,
@@ -151,7 +157,5 @@ module.exports = {
   getHistory,
   getHistoryDetails,
   getForgotPassword,
-  postForgotPassword,
-  getToken,
-  postToken
+  postForgotPassword
 };
