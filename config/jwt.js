@@ -4,10 +4,10 @@ require('dotenv').config();
 
 /**
  * Generates token for student
- * @param {User type} user object must contain id, role : student, admin
+ * @param {User type} user object must contain id, role : { student, admin }
  */
 module.exports = async (user) => {
-  const token = jwt.sign(user, process.env.STUDENT_JWT_SECRET, { expiresIn: '5m' });
+  const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '5m' });
 
   const table = (user.role === 'student' ? 'student' : 'admin') + 'Auth';
   const query = `UPDATE "${table}" SET "resetPasswordToken" = '${token}' `
