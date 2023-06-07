@@ -1,27 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const { ensureAuth, ensureNotAuth } = require('../../middlewares/auth.middlewares');
+const auth = require('../../middlewares/auth.middlewares');
 const middleware = require('../../middlewares/users/student.middlewares')
-const controllers = require('../../controllers/users/student.controllers');
+const controller = require('../../controllers/users/student.controllers');
+const { getToken, postToken } = require('../../controllers/auth.controllers')
 
-router.get('/', ensureNotAuth, controllers.getIndex);
-router.post('/', ensureNotAuth, middleware.indexPassportAuth, controllers.postIndex);
+router.get('/', auth.ensureNotAuth, controller.getIndex);
+router.post('/', auth.ensureNotAuth, middleware.indexPassportAuth, controller.postIndex);
 
-router.get('/dashboard', ensureAuth, middleware.isStudent, controllers.getDashboard);
+router.get('/token', auth.ensureNotAuth, auth.validateToken, getToken);
+router.post('/token', auth.ensureNotAuth, postToken);
 
-router.post('/leave-save', ensureAuth, middleware.isStudent, middleware.authenticateLeaveData, controllers.postLeaveSave); 
-router.post('/late-save', ensureAuth, middleware.isStudent, middleware.authenticateLateData, controllers.postLateSave);
+router.get('/logout', auth.ensureAuth, controller.getLogout);
 
-router.get('/history', ensureAuth, middleware.isStudent, controllers.getHistory);
+router.get('/dashboard', auth.ensureAuth, middleware.isStudent, controller.getDashboard);
 
-router.get('/history/details', ensureAuth, middleware.isStudent, controllers.getHistoryDetails);
+router.post('/leave-save', auth.ensureAuth, middleware.isStudent, middleware.authenticateLeaveData, controller.postLeaveSave); 
+router.post('/late-save', auth.ensureAuth, middleware.isStudent, middleware.authenticateLateData, controller.postLateSave);
 
-router.get('/forgot-password', ensureNotAuth, controllers.getForgotPassword);
-router.post('/forgot-password', controllers.postForgotPassword);
+router.get('/history', auth.ensureAuth, middleware.isStudent, controller.getHistory);
 
-router.get('/token', ensureNotAuth, middleware.validateToken, controllers.getToken);
-router.post('/token', ensureNotAuth, controllers.postToken);
+router.get('/history/details', auth.ensureAuth, middleware.isStudent, controller.getHistoryDetails);
 
-router.get('/logout', ensureAuth, controllers.getLogout);
+router.get('/forgot-password', auth.ensureNotAuth, controller.getForgotPassword);
+router.post('/forgot-password', controller.postForgotPassword);
+
 
 module.exports = router;
