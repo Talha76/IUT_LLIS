@@ -3,11 +3,16 @@ const router = express.Router();
 const controller = require('../../controllers/users/admin.controllers');
 const middleware = require('../../middlewares/users/admin.middlewares');
 const { ensureAdminAuth, ensureAdminNotAuth } = require('../../middlewares/auth.middlewares');
+const { getToken, postToken } = require('../../controllers/auth.controllers');
 
 router.get ('/', ensureAdminNotAuth, controller.getAdminIndex);
 router.post('/', ensureAdminNotAuth, middleware.indexPassportAuth, controller.postAdminIndex);
 
 router.get('/forgot-password', ensureAdminNotAuth, controller.getForgotPassword);
+router.post('/forgot-password', ensureAdminNotAuth, controller.postForgotPassword);
+
+router.get('/token', ensureAdminNotAuth, middleware.validateToken, getToken);
+router.post('/token', ensureAdminNotAuth, postToken);
 
 router.get('/logout', ensureAdminAuth, controller.getLogout);
 

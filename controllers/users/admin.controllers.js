@@ -176,7 +176,31 @@ const getForgotPassword = (req, res) => {
   })
 }
 
-const postForgotPassword = async (req, res) => {}
+const postForgotPassword = async (req, res) => {
+  const id = req.body.id;
+  
+  const userResult = await hallAdmin.getAdminById(id);
+  if (!userResult) {
+    req.flash('error', 'No user found');
+    return res.redirect('/admin/forgot-password');
+  }
+
+  const user = { id: userResult.id, role: userResult.role };
+
+  const token = await require('../../config/jwt')(user);
+  const message = {
+    from: 'mushfiqurtalha@iut-dhaka.edu',
+    to: 'mushfiqurtalha@iut-dhaka.edu',
+    subject: 'Reset your password for IUT LLIS',
+    text: `Hi,\n Please click the below link for resetting your password. This link will expire after 5 minutes.\n`
+        + `http://localhost:3000/admin/token?token=${token}`,
+    html: `<p>Hi</p><br><p>Please click the <a href="http://localhost:3000/admin/token?token=${token}">link</a> to reset your password. This link will expire after 5 minutes.</p>`
+  };
+  await require('../../config/mail')(message);
+
+  req.flash('message', 'A Mail has been sent to your email address');
+  res.redirect('/admin/forgot-password');
+}
 
 module.exports = {
   getAdminIndex, 
