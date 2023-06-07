@@ -8,7 +8,7 @@ const { getToken, postToken } = require('../../controllers/auth.controllers')
 router.get('/', auth.ensureNotAuth, controller.getIndex);
 router.post('/', auth.ensureNotAuth, middleware.indexPassportAuth, controller.postIndex);
 
-router.get('/token', auth.ensureNotAuth, auth.validateToken, getToken);
+router.get('/token', auth.ensureNotAuth, middleware.validateToken, getToken);
 router.post('/token', auth.ensureNotAuth, postToken);
 
 router.get('/logout', auth.ensureAuth, controller.getLogout);
