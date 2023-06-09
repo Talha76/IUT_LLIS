@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
   <%- include('../partials/studentDetails.head.ejs') %>
 
   <body
@@ -12,16 +11,29 @@
       padding-right: 0px;
       width: 100%;
       position: relative;
-      background: transparent;
+      background: #f0f8ff;
     "
     data-bs-target="#navcol-2"
     data-bs-smooth-scroll="true"
   >
-  
     <%- include('../partials/studentDetails.navbar.ejs') %>
 
     <div class="container" style="height: 500px">
       <div style="width: 100%; padding: 2%">
+        <div class="row">
+          <button
+            onclick="window.history.back()"
+            style="
+              border: aliceblue; 
+              background-color: aliceblue; 
+              width: auto;
+              color: blue;
+              font: 20px Poppins, sans-serif;
+            "
+          >
+            Back to previous page
+          </button>
+        </div>
         <label
           class="form-label"
           style="
@@ -257,28 +269,30 @@
               value="<%= leaveDetails[0].arrivalDate.toISOString().split('T')[0] %>"
             />
           </div>
-          <% if (typeof user === 'undefined' || (user.role === 'supervisor' && leaveDetails[0].supervisorStatus !== 'unapproved') || (user.role === 'provost' && leaveDetails[0].supervisorStatus !== 'approved')) { %>
-            <div style="width: 100%; margin-bottom: 10px">
-              <label
-                class="form-label d-xxl-flex"
-                style="
-                  width: 100%;
-                  font-family: Poppins, sans-serif;
-                  display: inline-block;
-                "
-                ><strong>Status:</strong></label
-              ><input
-                class="form-control form-control-sm"
-                type="text"
-                style="width: 50%"
-                required=""
-                readonly=""
-                name="arrivalDate"
-                value="<%= typeof user === 'undefined' ? leaveDetails[0].provostStatus : (user.role === 'supervisor' ? leaveDetails[0].supervisorStatus : (leaveDetails[0].supervisorStatus === 'rejected' ? 'rejected' : 'Not yet approved by supervisor')) %>"
-              />
-            </div>
+          <% if (typeof user === 'undefined' || (user.role === 'supervisor' &&
+          leaveDetails[0].supervisorStatus !== 'unapproved') || (user.role ===
+          'provost' && leaveDetails[0].supervisorStatus !== 'approved')) { %>
+          <div style="width: 100%; margin-bottom: 10px">
+            <label
+              class="form-label d-xxl-flex"
+              style="
+                width: 100%;
+                font-family: Poppins, sans-serif;
+                display: inline-block;
+              "
+              ><strong>Status:</strong></label
+            ><input
+              class="form-control form-control-sm"
+              type="text"
+              style="width: 50%"
+              required=""
+              readonly=""
+              name="arrivalDate"
+              value="<%= typeof user === 'undefined' ? leaveDetails[0].provostStatus : (user.role === 'supervisor' ? leaveDetails[0].supervisorStatus : (leaveDetails[0].supervisorStatus === 'rejected' ? 'rejected' : 'Not yet approved by supervisor')) %>"
+            />
+          </div>
           <% } else { %>
-            <a
+          <a
             href="/admin/details/leave-approve?role=<%= user.role %>"
             class="btn btn-outline-dark"
             style="
@@ -291,7 +305,8 @@
             "
             disabled
           >
-            Approve</a>
+            Approve</a
+          >
           <button
             class="btn btn-outline-dark"
             type="submit"

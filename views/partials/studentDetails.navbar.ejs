@@ -3,12 +3,15 @@
   style="width: 100%; height: 160px; margin-top: 0px"
 >
   <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="/<%= typeof user === 'undefined' ? 'student' : 'admin' %>/dashboard"
+    <a
+      class="navbar-brand d-flex align-items-center"
+      href="/<%= typeof user === 'undefined' ? 'student' : 'admin' %>/dashboard"
       ><img src="assets/img/IUT_LOGO.png" width="87" height="106" /><span
         style="font-size: 40px; color: rgba(103, 8, 8, 0.9)"
         ><strong>IUT </strong>LLIS</span
       ></a
-    ><button
+    >
+    <button
       data-bs-toggle="collapse"
       class="navbar-toggler"
       data-bs-target="#navcol-2"
@@ -40,12 +43,22 @@
             name="logout"
           >
             <a
+              href="/student/history"
+              class="dropdown-item"
+              id="history"
+              name="history"
+            >History</a>
+            <a
               class="dropdown-item"
               id="resetPassword"
               href="/admin/resetPassword"
               name="resetPassword"
               >Reset Password</a
-            ><a class="dropdown-item" href="/<%= typeof user === 'undefined' ? 'student' : 'admin' %>/logout">Logout</a>
+            ><a
+              class="dropdown-item"
+              href="/<%= typeof user === 'undefined' ? 'student' : 'admin' %>/logout"
+              >Logout</a
+            >
           </div>
         </div>
         <li class="nav-item"></li>
