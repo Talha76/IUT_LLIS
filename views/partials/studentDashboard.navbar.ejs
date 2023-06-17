@@ -20,48 +20,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navcol-2">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"></li>
-        <div class="btn-group open">
-          <button
-            class="btn btn-primary"
-            id="username"
-            type="button"
-            name="userName"
-          >
-            <%= (typeof user === 'undefined' ? student : user).name %></button
-          ><button
-            class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-            data-bs-toggle="dropdown"
-            aria-expanded="true"
-            type="button"
-          ></button>
-          <div
-            class="dropdown-menu"
-            data-bs-popper="none"
-            id="logout"
-            name="logout"
-          >
+        <li class="nav-item">
+          <a href="/student/history" class="nav-link active">History</a>
+        </li>
+        <li class="nav-item">
+          <a href="/student/reset-password" class="nav-link active">Reset Password</a>
+        </li>
+        <li class="nav-item">
           <a
-            href="/student/history"
-            class="dropdown-item"
-            id="history"
-            name="history"
-          >History</a>
-            <a
-              class="dropdown-item"
-              id="resetPassword"
-              href="/admin/resetPassword"
-              name="resetPassword"
-              >Reset Password</a
-            ><a
-              class="dropdown-item"
-              href="/<%= typeof user === 'undefined' ? 'student' : 'admin' %>/logout"
-              >Logout</a
-            >
-          </div>
-        </div>
-        <li class="nav-item"></li>
-        <li class="nav-item"></li>
+            class="nav-link"
+            href="/student/logout"
+            >Logout</a
+          >
+        </li>
+        <li class="nav-item">
+          <span class="nav-link navbar-text" style="color: black;">Hi, <strong><%= student.name %></strong></span>
+        </li>
       </ul>
     </div>
   </div>
