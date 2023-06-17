@@ -4,91 +4,7 @@
   id="tab-2"
   style="background: #f0f8ff; width: 100%"
 >
-  <div
-    style="
-      display: flex;
-      --bs-body-bg: var(--bs-danger);
-      background: #f0f8ff;
-      width: 100%;
-    "
-  >
-    <form
-      method="get"
-      action="/admin/dashboard"
-      class="ps-lg-0"
-      style="
-        display: block;
-        background: #f0f8ff;
-        border-color: var(--bs-highlight-bg);
-        transform: translate(180px);
-      "
-    >
-      <label
-        class="form-label"
-        style="
-          margin-left: 15px;
-          color: var(--bs-gray-900);
-          font-family: ABeeZee, sans-serif;
-          font-size: 25px;
-          text-align: left;
-          margin-right: 0px;
-        "
-        ><strong>Student ID</strong></label
-      ><label
-        class="form-label"
-        style="
-          color: var(--bs-black);
-          font-size: 25px;
-          margin-left: 40px;
-          font-family: ABeeZee, sans-serif;
-          text-align: center;
-        "
-        ><strong>From</strong></label
-      ><label
-        class="form-label"
-        style="
-          color: var(--bs-black);
-          font-size: 25px;
-          margin-left: 110px;
-          font-family: ABeeZee, sans-serif;
-        "
-        ><strong>To</strong></label
-      >
-      <div style="display: flex; background: #f0f8ff">
-        <input
-          class="form-control"
-          type="search"
-          id="studentId"
-          placeholder="search id"
-          name="studentId"
-        /><input
-          class="form-control form-control-sm"
-          id="from"
-          type="date"
-          style="margin-left: 10px"
-          name="from"
-        /><input
-          class="form-control form-control-sm"
-          id="to"
-          type="date"
-          style="margin-left: 10px"
-          name="to"
-        />
-        <button
-          class="btn btn-primary"
-          type="submit"
-          style="
-            margin-left: 10px;
-            background: var(--bs-blue);
-            border-color: var(--bs-blue);
-            color: var(--bs-white);
-            font-family: ABeeZee, sans-serif;
-            font-size: 20px;
-          "
-        />Search</button>
-      </div>
-    </form>
-  </div>
+
   <div
     style="
       background: #f0f8ff;
@@ -141,7 +57,25 @@
           margin-right: 12%;
         "
       >
-        <table class="table" id="Leavetable">
+      
+        <table style="display: none;">
+          <tbody>
+            <% if(leaveHistory.length > 0) { %>
+              <% leaveHistory.forEach(leave=> { %>
+                <tr id="leaveHidden">
+                  <td id="leaveId"> <a href="/admin/details?leaveId=<%= leave.leaveId %>"> <%= leave.leaveId %>  </a> </td>
+                  <td id="issueTime"><%= leave.time %></td>
+                  <td id="studentId"> <a href="/admin/dashboard?studentId=<%= leave.id %>&from=&to="><%= leave.id %></a></td>
+                  <td id="name"><%= leave.name %></td>
+                  <td id="purposeOfVisit"><%= leave.purposeOfVisit %></td>
+                  <td id="status"><%= user.role === 'supervisor' ? leave.supervisorStatus : leave.provostStatus %></td>
+                </tr>
+              <% }) %>
+            <% } %>
+          </tbody>
+        </table>
+
+        <table class="table">
           <thead style="position: static">
             <tr
               style="
@@ -166,7 +100,7 @@
                   height: 55px;
                 "
               >
-                Time
+                Issuing Date
               </th>
               <th
                 style="
@@ -196,16 +130,16 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="leaveTable" name="leaveTable">
             <% if(leaveHistory.length > 0) { %>
               <% leaveHistory.forEach(leave=> { %>
-                <tr>
-                  <td> <a href="/admin/details?leaveId=<%= leave.leaveId %>"> <%= leave.leaveId %>  </a> </td>
-                  <td><%= leave.time %></td>
-                  <td> <a href="/admin/dashboard?studentId=<%= leave.id %>&from=&to="><%= leave.id %></a></td>
-                  <td><%= leave.name %></td>
-                  <td><%= leave.purposeOfVisit %></td>
-                  <td><%= user.role === 'supervisor' ? leave.supervisorStatus : leave.provostStatus %></td>
+                <tr id="leave">
+                  <td id="leaveId"> <a href="/admin/details?leaveId=<%= leave.leaveId %>"> <%= leave.leaveId %>  </a> </td>
+                  <td id="issueTime"><%= leave.time %></td>
+                  <td id="studentId"> <a href="/admin/dashboard?studentId=<%= leave.id %>&from=&to="><%= leave.id %></a></td>
+                  <td id="name"><%= leave.name %></td>
+                  <td id="purposeOfVisit"><%= leave.purposeOfVisit %></td>
+                  <td id="status"><%= user.role === 'supervisor' ? leave.supervisorStatus : leave.provostStatus %></td>
                 </tr>
               <% }) %>
             <% } %>
@@ -301,7 +235,7 @@
                   height: 55px;
                 "
               >
-                Time
+                Issuing Date
               </th>
               <th
                 style="

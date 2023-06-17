@@ -4,7 +4,7 @@
 >
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="#"
-      ><img src="assets/img/IUT_LOGO.png" width="87" height="106" /><span
+      ><img src="assets/img/IUT_LOGO.png" width="80" height="106" /><span
         style="font-size: 40px"
         ><strong>IUT </strong>LLIS</span
       ></a
@@ -16,40 +16,18 @@
       <span class="visually-hidden">Toggle navigation</span
       ><span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navcol-2" style="font-size: 40px">
+    <div class="collapse navbar-collapse" id="navcol-2">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"></li>
-        <div class="btn-group open">
-          <button
-            class="btn btn-primary"
-            id="username"
-            type="button"
-            name="userName"
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/admin/logout"
+            >Logout</a
           >
-            <%= user.name %> </button
-          ><button
-            class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-            data-bs-toggle="dropdown"
-            aria-expanded="true"
-            type="button"
-          ></button>
-          <div
-            class="dropdown-menu"
-            data-bs-popper="none"
-            id="logout"
-            name="logout"
-          >
-            <a
-              class="dropdown-item"
-              id="resetPassword"
-              href="/admin/resetPassword"
-              name="resetPassword"
-              >Reset Password</a
-            ><a class="dropdown-item" href="/admin/logout">Logout</a>
-          </div>
-        </div>
-        <li class="nav-item"></li>
-        <li class="nav-item"></li>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link navbar-text" style="color: black;">Hi, <strong><%= user.name %></strong></span>
+        </li>
       </ul>
     </div>
   </div>
