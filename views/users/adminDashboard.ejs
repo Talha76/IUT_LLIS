@@ -3,7 +3,7 @@
   <%- include('../partials/adminDashboard.head.ejs') %>
 
   <body
-    style="font-size: 40px; background: #f0f8ff; width: 100%"
+    style="background: #f0f8ff; width: 100%"
   >
     <%- include('../partials/adminDashboard.navbar.ejs') %>
 
@@ -33,14 +33,14 @@
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">From:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="issueFrom" id="issueFrom" onchange="getDate()">
               </div>
             </div>
             <!-- To -->
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">To:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="issueTo" id="issueTo">
               </div>
             </div>
           </div>
@@ -55,14 +55,14 @@
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">From:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="departureFrom" id="departureFrom">
               </div>
             </div>
             <!-- To -->
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">To:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="departureTo" id="departureTo">
               </div>
             </div>
           </div>
@@ -77,14 +77,14 @@
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">From:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="arrivalFrom" id="arrivalFrom">
               </div>
             </div>
             <!-- To -->
             <div class="d-flex flex-row gap-2">
               <div style="margin-left: 15px; width: 45px;">To:</div>
               <div>
-                <input type="date" name="issueFrom" id="issueFrom">
+                <input type="date" name="arrivalTo" id="arrivalTo">
               </div>
             </div>
           </div>
@@ -95,13 +95,13 @@
           <label for="statusContainer"><strong>Status:</strong></label>
           <div id="statusContainer" class="d-flex flex-row gap-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="approved" checked>
+              <input class="form-check-input" type="checkbox" id="approved" checked>
               <label class="form-check-label" for="approved">
                 Approved
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="rejected" checked>
+              <input class="form-check-input" type="checkbox" id="rejected" checked>
               <label class="form-check-label" for="rejected">
                 Rejected
               </label>
