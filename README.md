@@ -1,18 +1,19 @@
 # IUT LLIS
 
+## Table of Contents
+
+- [IUT LLIS](#iut-llis)
+  - [Table of Contents](#table-of-contents)
+  - [Project Description](#project-description)
+  - [How to Install the Project](#how-to-install-the-project)
+  - [How to Use the Project](#how-to-use-the-project)
+  - [How to Contribute](#how-to-contribute)
+  - [Technologies used](#technologies-used)
+  - [API documentation](#api-documentation)
+
 ## Project Description
 
 This project is a web application for the management of leave and late forms information in IUT Female Halls of Residence. This project is developed using **Express.js** framework for **Node.js** and **PostgreSQL** as a database.
-
-## Table of Contents
-
-- [Project Description](#project-description)
-- [Table of Contents](#table-of-contents)
-- [How to Install the Project](#how-to-install-the-project)
-- [How to Use the Project](#how-to-use-the-project)
-- [How to Contribute](#how-to-contribute)
-- [Technologies used](#technologies-used)
-- [API documentation](#api-documentation)
 
 ## How to Install the Project
 
