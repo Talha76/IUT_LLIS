@@ -29,6 +29,25 @@ document.getElementById('departureDate').addEventListener('change', () => {
   arrivalDate.max = arrivalDateMax.toISOString().slice(0, 10);
 });
 
+/**
+  * @param {Date} time
+  */
+const isToday = time => time.toDateString() === new Date().toDateString();
+
+document.getElementById('departureTime').addEventListener('change', () => {
+  const departureTime = document.getElementById('departureTime').value;
+  const arrivalTimeMin = new Date(departureTime);
+
+  if (isToday(arrivalTimeMin)) {
+    arrivalTimeMin.setHours(arrivalTimeMin.getHours() + 6);
+  } else {
+    arrivalTimeMin.setDate(new Date().getDate());
+    arrivalTimeMin.setHours(6);
+  }
+
+  document.getElementById('arrivalTime').min = arrivalTimeMin.toISOString().slice(0, 16);
+});
+
 function getReasonBox(val) {
   const reason = document.getElementsByName('othersDescription')[1];
   if (val === "others") {
