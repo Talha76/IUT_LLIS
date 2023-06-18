@@ -1,4 +1,4 @@
-<center><h1><strong>IUT LLIS</strong></h1></center>
+# IUT LLIS
 
 ## Project Description
 
