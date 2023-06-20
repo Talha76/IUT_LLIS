@@ -13,7 +13,7 @@
 
 ## Project Description
 
-This project is a web application for the management of leave and late forms information in IUT Female Halls of Residence. This project is developed using **Express.js** framework for **Node.js** and **PostgreSQL** as a database.
+This project is a web application for the management of leave and late forms information in IUT Female Halls of Residence. This project is still in development phase. This project is developed using **Express.js** framework for **Node.js** and **PostgreSQL** as a database.
 
 ## How to Install the Project
 
