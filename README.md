@@ -1,19 +1,19 @@
 # IUT LLIS
-
-## Table of Contents
-
-- [IUT LLIS](#iut-llis)
-  - [Table of Contents](#table-of-contents)
-  - [Project Description](#project-description)
-  - [How to Install the Project](#how-to-install-the-project)
-  - [How to Use the Project](#how-to-use-the-project)
-  - [How to Contribute](#how-to-contribute)
-  - [Technologies used](#technologies-used)
-  - [API documentation](#api-documentation)
+  
+[![GitHub license](https://img.shields.io/github/license/Talha76/IUT_LLIS)](LICENSE) ![](https://img.shields.io/github/commit-activity/t/talha76/iut_llis) [![GitHub issues](https://img.shields.io/github/issues/Talha76/IUT_LLIS)](ISSUES) [![GitHub pull requests](https://img.shields.io/github/issues-pr/Talha76/IUT_LLIS)](PULL_REQUESTS) [![GitHub contributors](https://img.shields.io/github/contributors/Talha76/IUT_LLIS)](CONTRIBUTORS) ![GitHub last commit](https://img.shields.io/github/last-commit/Talha76/IUT_LLIS)
+![GitHub repo size](https://img.shields.io/github/repo-size/Talha76/IUT_LLIS) ![GitHub code size](https://img.shields.io/github/languages/code-size/Talha76/IUT_LLIS) [![GitHub language count](https://img.shields.io/github/languages/count/Talha76/IUT_LLIS)](LANGUAGE_COUNT) [![GitHub top language](https://img.shields.io/github/languages/top/Talha76/IUT_LLIS)](TOP_LANGUAGE)
 
 ## Project Description
 
 This project is a web application for the management of leave and late forms information in IUT Female Halls of Residence. This project is still in development phase. This project is developed using **Express.js** framework for **Node.js** and **PostgreSQL** as a database.
+
+## Table of Contents
+
+- [How to Install the Project](#how-to-install-the-project)
+- [How to Use the Project](#how-to-use-the-project)
+- [How to Contribute](#how-to-contribute)
+- [Technologies used](#technologies-used)
+- [API documentation](#api-documentation)
 
 ## How to Install the Project
 
