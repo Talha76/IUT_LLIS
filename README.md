@@ -1,6 +1,6 @@
 # IUT LLIS
   
-[![GitHub license](https://img.shields.io/github/license/Talha76/IUT_LLIS)](LICENSE) ![](https://img.shields.io/github/commit-activity/t/talha76/iut_llis) [![GitHub issues](https://img.shields.io/github/issues/Talha76/IUT_LLIS)](ISSUES) [![GitHub pull requests](https://img.shields.io/github/issues-pr/Talha76/IUT_LLIS)](PULL_REQUESTS) [![GitHub contributors](https://img.shields.io/github/contributors/Talha76/IUT_LLIS)](CONTRIBUTORS) ![GitHub last commit](https://img.shields.io/github/last-commit/Talha76/IUT_LLIS)
+[![GitHub license](https://img.shields.io/github/license/Talha76/IUT_LLIS)](LICENSE) ![Commit count](https://img.shields.io/github/commit-activity/t/talha76/iut_llis) [![GitHub issues](https://img.shields.io/github/issues/Talha76/IUT_LLIS)](ISSUES) [![GitHub pull requests](https://img.shields.io/github/issues-pr/Talha76/IUT_LLIS)](PULL_REQUESTS) [![GitHub contributors](https://img.shields.io/github/contributors/Talha76/IUT_LLIS)](CONTRIBUTORS) ![GitHub last commit](https://img.shields.io/github/last-commit/Talha76/IUT_LLIS)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Talha76/IUT_LLIS) ![GitHub code size](https://img.shields.io/github/languages/code-size/Talha76/IUT_LLIS) [![GitHub language count](https://img.shields.io/github/languages/count/Talha76/IUT_LLIS)](LANGUAGE_COUNT) [![GitHub top language](https://img.shields.io/github/languages/top/Talha76/IUT_LLIS)](TOP_LANGUAGE)
 
 ## Project Description
