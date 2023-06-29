@@ -1,10 +1,4 @@
 {
   "editor.tabSize": 2,
   "markdown.extension.toc.levels": "2..6",
-  "markdown.extension.toc.omittedFromToc": {
-    "README.md": [
-      "## Project Description",
-      "## Table of Contents",
-    ],
-  },
 }
