@@ -6,7 +6,7 @@ const getIndex = (req, res) => {
     error: req.flash('error'),
     success: req.flash('success')
   });
-};
+}
 
 const postIndex = (req, res) => res.redirect('/student/dashboard');
 
@@ -121,7 +121,7 @@ const getForgotPassword = async (req, res) => {
 }
 
 const postForgotPassword = async (req, res) => {
-  const { id } = req.body;
+  const id = req.body.id;
 
   const userResult = await studentModel.getStudentById(id);
 
@@ -131,15 +131,20 @@ const postForgotPassword = async (req, res) => {
   }
 
   const user = { id: userResult.id, role: 'student' };
-
   const token = await require('../../config/jwt')(user);
+
+  const recepientEmail = userResult.email;
+  const mailText = `Hi,\n Please click the below link for resetting your password. This link will expire after 5 minutes.\n`
+                 + `http://localhost:3000/student/token?token=${token}`;
+  const mailHtml = `<p>Hi</p><br><p>Please click the <a href="http://localhost:3000/student/token?token=${token}">link</a> to reset your password.`
+                 + ` This link will expire after 5 minutes.</p>`;
+  
   const message = {
     from: 'mushfiqurtalha@iut-dhaka.edu',
-    to: 'mushfiqurtalha@iut-dhaka.edu',
+    to: recepientEmail,
     subject: 'Reset your password for IUT LLIS',
-    text: `Hi,\n Please click the below link for resetting your password. This link will expire after 5 minutes.\n`
-        + `http://localhost:3000/student/token?token=${token}`,
-    html: `<p>Hi</p><br><p>Please click the <a href="http://localhost:3000/student/token?token=${token}">link</a> to reset your password. This link will expire after 5 minutes.</p>`
+    text: mailText,
+    html: mailHtml
   };
   await require('../../config/mail')(message);
 

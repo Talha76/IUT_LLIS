@@ -41,25 +41,22 @@ const validateToken = async (req, res, next) => {
         return done(new Error('Invalid token'));
       }
 
-      studentModel.getStudentById(payload.id)
-        .then((user) => {
-          if (!user) {
-            return done(null, false, { message: 'User not found!' });
-          } else if (user.gender.toLowerCase() === 'male' ||
-                      user.resetPasswordToken !== req.query.token) {
-            return done(null, false, { message: 'Access Denied!' });
-          } else {
-            return done(null, user);
-          }
-        })
-        .catch((err) => done(err));
+      const user = studentModel.getStudentById(payload.id);
+      if (!user) {
+        return done(null, false, { message: 'User not found!' });
+      } if (user.gender.toLowerCase() === 'male' ||
+            user.resetPasswordToken !== req.query.token) {
+        return done(null, false, { message: 'Access Denied!' });
+      }
+
+      return done(null, user);
     }
   ));
 
   await passport.authenticate('jwt-student', {
     session: false,
     failureFlash: true,
-    failureRedirect: '/student'
+    failureRedirect: '/student/forgot-password'
   })(req, res, next);
 }
 

@@ -9,7 +9,7 @@ router.get('/', auth.ensureNotAuth, controller.getIndex);
 router.post('/', auth.ensureNotAuth, middleware.indexPassportAuth, controller.postIndex);
 
 router.get('/forgot-password', auth.ensureNotAuth, controller.getForgotPassword);
-router.post('/forgot-password', controller.postForgotPassword);
+router.post('/forgot-password', auth.ensureNotAuth, controller.postForgotPassword);
 
 router.get('/token', auth.ensureNotAuth, middleware.validateToken, getToken);
 router.post('/token', auth.ensureNotAuth, postToken);

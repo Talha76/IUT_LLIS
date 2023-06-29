@@ -1,9 +1,10 @@
 const express = require('express');
-const app = express();
 const session = require('express-session');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
+const app = express();
 
 // Using the public folder as specified static resources
 app.use(express.static('public'));
