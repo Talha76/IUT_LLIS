@@ -7,7 +7,5 @@ require('dotenv').config();
  */
 module.exports = async (message) => {
   mail.setApiKey(process.env.SENDGRID_API_KEY);
-  await mail.send(message)
-    .then(() => console.log('Email sent'))
-    .catch((err) => console.error(err));
+  await mail.send(message);
 };
