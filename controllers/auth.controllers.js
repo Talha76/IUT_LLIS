@@ -27,7 +27,7 @@ const postToken = (req, res) => {
 }
 
 const getLogout = (req, res) => {
-  const role = req.user.role;
+  const role = req.user.role === 'student' ? 'student' : 'admin';
   req.logout((error) => console.error(error));
   res.redirect(`/${role}`);
 }
