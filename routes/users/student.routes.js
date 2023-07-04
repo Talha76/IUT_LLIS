@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../../middlewares/auth.middlewares');
 const middleware = require('../../middlewares/users/student.middlewares')
 const controller = require('../../controllers/users/student.controllers');
-const { getToken, postToken } = require('../../controllers/auth.controllers')
+const { getToken, postToken, getLogout } = require('../../controllers/auth.controllers')
 
 router.get('/', auth.ensureNotAuth, controller.getIndex);
 router.post('/', auth.ensureNotAuth, middleware.indexPassportAuth, controller.postIndex);
@@ -14,7 +14,7 @@ router.post('/forgot-password', auth.ensureNotAuth, controller.postForgotPasswor
 router.get('/token', auth.ensureNotAuth, middleware.validateToken, getToken);
 router.post('/token', auth.ensureNotAuth, postToken);
 
-router.get('/logout', auth.ensureAuth, controller.getLogout);
+router.get('/logout', auth.ensureAuth, getLogout);
 
 router.get('/dashboard', auth.ensureAuth, middleware.isStudent, controller.getDashboard);
 

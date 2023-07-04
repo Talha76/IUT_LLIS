@@ -26,7 +26,14 @@ const postToken = (req, res) => {
   res.redirect(`/${role}`);
 }
 
+const getLogout = (req, res) => {
+  const role = req.user.role;
+  req.logout((error) => console.error(error));
+  res.redirect(`/${role}`);
+}
+
 module.exports = {
   getToken,
-  postToken
+  postToken,
+  getLogout
 }

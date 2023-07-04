@@ -17,12 +17,6 @@ const getDashboard = (req, res) => {
   });
 }
 
-const getLogout = (req, res) => {
-  req.logout((err) => console.error(err));
-  req.flash('success', 'You are successfully logged out');
-  res.redirect('/');
-}
-
 const postLeaveSave = async (req, res) => {
   const info = req.body;
   await studentModel.saveLeaveInfo(req.user.id, info)
@@ -156,7 +150,6 @@ module.exports = {
   getIndex,
   postIndex,
   getDashboard,
-  getLogout,
   postLeaveSave,
   postLateSave,
   getHistory,
